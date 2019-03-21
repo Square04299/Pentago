@@ -4,6 +4,6 @@ package G45502.Pentago.model;
  *
  * @author G45502
  */
-public class Couleur {
-    
+public enum Couleur {
+    BLACK, WHITE;
 }
