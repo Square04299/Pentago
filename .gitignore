@@ -2,3 +2,4 @@
 .jacocoverage
 .DS_Store
 /build/
+/dist/

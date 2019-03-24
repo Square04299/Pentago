@@ -7,9 +7,9 @@ package G45502.Pentago.model;
 public interface Facade {
     void getCurrentPlayer();
 
-    boolean placePiece();
+    void placePiece();
 
-    void rotationQuadrant();
+    void rotationQuadrant(int value);
 
     Board setBoard();
 
