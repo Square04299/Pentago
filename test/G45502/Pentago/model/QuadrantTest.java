@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package G45502.Pentago.model;
 
 import org.junit.Test;
@@ -38,27 +33,41 @@ public class QuadrantTest {
      * Test of rotateRight method, of class Quadrant.
      */
     @Test
-    public void testRotateRight() {
-        System.out.println("rotateRight");
+    public void testRotateLeft() {
+        
+        System.out.println("rotateLeft");
         Quadrant instance = new Quadrant();
         instance.addPiece(0, 0, Marble.WHITE);
-        instance.rotateRight();
         
-        int[][] expected1 = new int[3][3];
-        expected1[0][2] = 1;
+        instance.rotateLeft();
         
-        assertEquals(expected1, instance);
+        Quadrant expected = new Quadrant();
+        expected.addPiece(2, 0, Marble.WHITE);
+        
+        int[][] instance1 = instance.getQuadrant();
+        int[][] expected1 = expected.getQuadrant();
+        
+        assertEquals(expected1[2][0], instance1[2][0]);
     }
 
     /**
      * Test of rotateLeft method, of class Quadrant.
      */
     @Test
-    public void testRotateLeft() {
-        System.out.println("rotateLeft");
+    public void testRotateRight() {
+        System.out.println("rotateRight");
         Quadrant instance = new Quadrant();
-        instance.rotateLeft();
-        fail("The test case is a prototype.");
+        instance.addPiece(0, 0, Marble.WHITE);
+        
+        instance.rotateRight();
+        
+        Quadrant expected = new Quadrant();
+        expected.addPiece(0, 2, Marble.WHITE);
+        
+        int[][] instance1 = instance.getQuadrant();
+        int[][] expected1 = expected.getQuadrant();
+        
+        assertEquals(expected1[0][2], instance1[0][2]);
     }
     
 }
