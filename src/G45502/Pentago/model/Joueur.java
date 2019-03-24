@@ -12,4 +12,12 @@ public class Joueur {
         this.name = name;
         this.color = color;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Marble getColor() {
+        return color;
+    }
 }

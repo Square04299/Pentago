@@ -1,5 +1,6 @@
 package G45502.Pentago.model;
 
+import G45502.Pentago.exception.UnavailablePlace;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +9,24 @@ import java.util.List;
  * @author G45502
  */
 public class Board {
-    private List quadrant;
+    private final List<Quadrant> board;
 
     public Board() {
-        this.quadrant = new ArrayList();
+        this.board = new ArrayList();
         for (int i = 0; i < 4; i++) {
-            this.quadrant.add(new Quadrant());
+            this.board.add(new Quadrant());
         }
     }
     
+    Quadrant getQuadrant(int value){
+        if (value < 0 || value > 4) {
+            throw new UnavailablePlace("The Number you gave is out of bound from the list");
+        }else{
+            return this.board.get(value);
+        }
+    }
     
+    void addPiece(int x, int y, Marble c, int q){
+        this.getQuadrant(q).addPiece(x, y, c);
+    }
 }
