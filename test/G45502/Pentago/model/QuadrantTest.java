@@ -25,7 +25,6 @@ public class QuadrantTest {
         Quadrant expected = new Quadrant();
         int[][] expected1 = expected.getQuadrant();
         expected1[0][0] = 0;
-        
         assertTrue(result[0][0] == expected1[0][0]);
     }
 

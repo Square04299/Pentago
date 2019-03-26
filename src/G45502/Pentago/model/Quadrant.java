@@ -1,6 +1,5 @@
 package G45502.Pentago.model;
 
-import java.util.Arrays;
 
 /**
  *

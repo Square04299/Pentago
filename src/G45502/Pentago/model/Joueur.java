@@ -1,5 +1,7 @@
 package G45502.Pentago.model;
 
+import java.util.List;
+
 /**
  *
  * @author G45502
@@ -19,5 +21,22 @@ public class Joueur {
 
     public Marble getColor() {
         return color;
+    }
+    
+    boolean isWhite(){
+        return (this.color == Marble.WHITE);
+    }
+    
+    Joueur getPlayer(List<Joueur> players, Marble color){
+        if (players.isEmpty()) {
+            throw new IllegalArgumentException("The list players is empty");
+        }
+        Joueur newCurrentPlayer = null;
+        for (Joueur player : players) {
+            if (player.getColor() == color) {
+                newCurrentPlayer = new Joueur(player.getName(), color);
+            }
+        }
+        return newCurrentPlayer;
     }
 }
