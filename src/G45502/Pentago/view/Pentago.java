@@ -1,6 +1,7 @@
 package G45502.Pentago.view;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -15,13 +16,11 @@ public class Pentago extends Application{
     
     @Override
     public void start(Stage stage) {
+        Board board = new Board();
+        stage.setTitle("Pentago");
         
-        
-        
-        
-        //Scene scene = new Scene(vbox, 600, 600);
-        //stage.setScene(scene);
+        Scene primaryScene = new Scene(board, 600, 600);
+        stage.setScene(primaryScene);
         stage.show();
     }
-    
 }

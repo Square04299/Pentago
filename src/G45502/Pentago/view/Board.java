@@ -9,6 +9,21 @@ import javafx.scene.layout.GridPane;
 public class Board extends GridPane{
     
     private GridPane board;
+
+    public Board() {
+        initialze();
+    }
+
+    private void initialze() {
+        board = new GridPane();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                board.add(new Quadrant(), j, i);
+            }
+        }
+        //board.getStylesheets().add("Board.css");
+    }
+    
     
     
 }
