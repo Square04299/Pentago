@@ -1,5 +1,7 @@
 package G45502.Pentago.model;
 
+import G45502.Pentago.exception.GameException;
+
 
 /**
  *
@@ -12,6 +14,12 @@ public class Quadrant {
 
     public Quadrant() {
         this.quadrant = new int[MAX_SIZE][MAX_SIZE];
+        for (int i = 0; i < MAX_SIZE; i++) {
+            for (int j = 0; j < MAX_SIZE; j++) {
+                this.quadrant[i][j] = -1;
+            }
+            
+        }
     }
 
     public int[][] getQuadrant() {
@@ -19,7 +27,11 @@ public class Quadrant {
     }
 
     void addPiece(int x, int y, Marble color){
-        this.quadrant[x][y] = color.getValue();
+        if (quadrant[x][y] == -1) {
+            this.quadrant[x][y] = color.getValue();
+        }else{
+            throw new GameException("A Marble is already in this slot");
+        }
     }
     
     void rotateLeft(){

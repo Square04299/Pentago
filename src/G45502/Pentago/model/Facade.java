@@ -13,8 +13,6 @@ public interface Facade {
 
     //void rotationQuadrant(int value); Later Implamentation
 
-    Board setBoard();
-
     boolean isOver(State state);
 
     Winners getWinners();

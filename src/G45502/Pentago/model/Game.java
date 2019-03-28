@@ -8,27 +8,35 @@ import java.util.List;
  */
 public class Game implements Facade {
     
-    private Board board;
-    private List<Joueur> players;
+    private final Board board;
+    private final List<Joueur> players;
     private Joueur currentPlayer;
 
     public Game(List<Joueur> players) {
         this.board = new Board();
         this.players = players;
-        this.currentPlayer = players.get(1);
+        this.currentPlayer = players.get(0); //0 will always be WHITE
     }
     
     @Override
     public Joueur getCurrentPlayer() {
         return currentPlayer;
     }
+
+    public Board getBoard() {
+        return board;
+    }
+    
+    public int[][] getQuadrant(int value){
+        return board.getQuadrant(value).getQuadrant();
+    }
     
     @Override
     public void changeCurrentPlayer() {
         if (this.currentPlayer.isWhite()) {
-            this.currentPlayer.getPlayer(players, Marble.BLACK);
+            this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.BLACK);
         } else {
-            this.currentPlayer.getPlayer(players, Marble.WHITE);
+            this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.WHITE);
         }
     }
 
@@ -41,11 +49,6 @@ public class Game implements Facade {
 //    public void rotationQuadrant(int value) {
 //
 //    }
-
-    @Override
-    public Board setBoard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public boolean isOver(State state) {
