@@ -13,14 +13,29 @@ public class Pentago extends Application{
     public static void main(String[] args) {
         launch(args);
     }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        System.out.println("Stopping GUI");
+    }
+
+    @Override
+    public void init() throws Exception {
+        super.init();
+        System.out.println("Starting GUI");
+    }
+    
+    
     
     @Override
-    public void start(Stage stage) {
+    public void start(Stage primaryStage){
         Board board = new Board();
-        stage.setTitle("Pentago");
+        primaryStage.setTitle("Pentago");
         
-        Scene primaryScene = new Scene(board, 600, 600);
-        stage.setScene(primaryScene);
-        stage.show();
+        
+        Scene primaryScene = new Scene(board, 1000, 600);
+        primaryStage.setScene(primaryScene);
+        primaryStage.show();
     }
 }

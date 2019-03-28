@@ -9,13 +9,13 @@ import javafx.scene.shape.Circle;
 public class Marble extends Circle{
     private Circle circle;
 
-    public Marble(Circle circle) {
+    public Marble() {
+        System.out.println("        Marble");
         initialze();
     }
 
     private void initialze() {
         circle = new Circle();
-        //circle.getStylesheets().add("Circle.css");
     }
     
     
