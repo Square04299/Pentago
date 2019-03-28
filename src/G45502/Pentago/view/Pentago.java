@@ -2,6 +2,7 @@ package G45502.Pentago.view;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
  */
 public class Pentago extends Application{
 
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -26,16 +28,21 @@ public class Pentago extends Application{
         System.out.println("Starting GUI");
     }
     
-    
+        
     
     @Override
     public void start(Stage primaryStage){
         Board board = new Board();
         primaryStage.setTitle("Pentago");
+        Pane root = new Pane();
+        root.getChildren().add(board.getBoard());
         
         
-        Scene primaryScene = new Scene(board, 1000, 600);
+        Scene primaryScene = new Scene(root);
         primaryStage.setScene(primaryScene);
         primaryStage.show();
+
     }
+    
+    
 }
