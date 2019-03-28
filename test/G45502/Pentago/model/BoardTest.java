@@ -5,6 +5,7 @@
  */
 package G45502.Pentago.model;
 
+import G45502.Pentago.exception.GameException;
 import G45502.Pentago.exception.UnavailablePlace;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -52,10 +53,32 @@ public class BoardTest{
         int y = 0;
         Marble m = Marble.WHITE;
         int v = 1;
+        Board instanceBoard = new Board();
+        instanceBoard.addPiece(x, y, m, v);
+        
+        Board expectedBoard = new Board();
+        expectedBoard.addPiece(x, y, m, v);
+        
+        int[][]instance = instanceBoard.getQuadrant(v).getQuadrant();
+        int[][]expected = expectedBoard.getQuadrant(v).getQuadrant();
+        
+        assertEquals(expected[0][0],instance[0][0]);
+    }
+    
+    /**
+     * Test of addPiece method, of class Board.
+     */
+    @Test(expected = GameException.class)
+    public void testAddPieceException() {
+        System.out.println("addPiece");
+        int x = 0;
+        int y = 0;
+        int v = 1;
+        Marble m = Marble.WHITE;
+        
         Board instance = new Board();
         instance.addPiece(x, y, m, v);
-        Quadrant result = instance.getQuadrant(v);
-        result.addPiece(x, y, m);
+        instance.addPiece(x, y, m, v);
     }
     
 }

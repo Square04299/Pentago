@@ -1,5 +1,6 @@
 package G45502.Pentago.model;
 
+import G45502.Pentago.exception.GameException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -26,6 +27,20 @@ public class QuadrantTest {
         int[][] expected1 = expected.getQuadrant();
         expected1[0][0] = 0;
         assertTrue(result[0][0] == expected1[0][0]);
+    }
+    
+    /**
+     * Test of addPiece method, of class Quadrant.
+     */
+    @Test(expected = GameException.class)
+    public void testAddPieceException() {
+        System.out.println("addPiece");
+        
+        Quadrant instance = new Quadrant();
+        instance.addPiece(0, 0, Marble.BLACK);
+        
+        Quadrant exception = new Quadrant();
+        instance.addPiece(0, 0, Marble.BLACK);
     }
 
     /**
