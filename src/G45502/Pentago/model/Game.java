@@ -1,5 +1,6 @@
 package G45502.Pentago.model;
 
+import G45502.Pentago.exception.GameException;
 import java.util.List;
 
 /**
@@ -11,11 +12,13 @@ public class Game implements Facade {
     private final Board board;
     private final List<Joueur> players;
     private Joueur currentPlayer;
+    State gameState;
 
     public Game(List<Joueur> players) {
         this.board = new Board();
         this.players = players;
         this.currentPlayer = players.get(0); //0 will always be WHITE
+        gameState = State.PLACE;
     }
     
     @Override
@@ -42,7 +45,12 @@ public class Game implements Facade {
 
     @Override
     public void placePiece(int x, int y, int q) {
-        board.addPiece(x, y, this.currentPlayer.getColor(), q);
+        if (gameState == State.PLACE) {
+            board.addPiece(x, y, this.currentPlayer.getColor(), q);
+        }else{
+            throw new GameException("You are in the wrong State");
+        }
+        gameState = State.ROTATE;
     }
 
 //    @Override
@@ -51,13 +59,26 @@ public class Game implements Facade {
 //    }
 
     @Override
-    public boolean isOver(State state) {
-        return state == State.OVER;
+    public boolean isOver() {
+        return gameState == State.OVER;
+    }
+    
+    @Override
+    public void setState(State state){
+        this.gameState = state;
     }
 
     @Override
-    public Winners getWinners() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Joueur getWinners() {
+        if (isOver()) {
+            return currentPlayer;
+        }else{
+            throw new GameException("There is no winner");
+        }
+    }
+
+    State getState() {
+        return gameState;
     }
 
 }

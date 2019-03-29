@@ -13,7 +13,9 @@ public interface Facade {
 
     //void rotationQuadrant(int value); Later Implamentation
 
-    boolean isOver(State state);
+    boolean isOver();
+    
+    void setState(State state);
 
-    Winners getWinners();
+    Joueur getWinners();
 }

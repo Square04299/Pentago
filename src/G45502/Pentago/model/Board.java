@@ -29,4 +29,9 @@ public class Board {
     void addPiece(int x, int y, Marble c, int q){
         this.getQuadrant(q).addPiece(x, y, c);
     }
+    
+    boolean isEmpty(int value){
+        Quadrant empty = this.getQuadrant(value);
+        return empty.isEmpty();
+    }
 }

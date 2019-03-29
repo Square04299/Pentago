@@ -49,4 +49,14 @@ public class Quadrant {
             this.rotateLeft();
         }
     }
+    
+    boolean isEmpty(){
+        for (int i = 0; i < MAX_SIZE; i++) {
+            for (int j = 0; j < MAX_SIZE; j++) {
+                if (this.quadrant[i][j] == -1) 
+                    return true;
+            }
+        }
+        return false;
+    }
 }
