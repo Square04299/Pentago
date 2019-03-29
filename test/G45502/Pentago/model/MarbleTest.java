@@ -22,5 +22,4 @@ public class MarbleTest {
         int result = instance.getValue();
         assertEquals(expResult, result);
     }
-    
 }

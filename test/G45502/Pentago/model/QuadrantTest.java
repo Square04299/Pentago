@@ -83,5 +83,46 @@ public class QuadrantTest {
         
         assertEquals(expected1[0][2], instance1[0][2]);
     }
+
+    /**
+     * Test of getQuadrant method, of class Quadrant.
+     */
+    @Test
+    public void testGetQuadrant() {
+        System.out.println("getQuadrant");
+        Quadrant instance = new Quadrant();
+        int[][] expResult = instance.getQuadrant();
+        int[][] result = instance.getQuadrant();
+        assertArrayEquals(expResult, result);
+    }
+
+    /**
+     * Test of isEmpty method, of class Quadrant.
+     */
+    @Test
+    public void testIsEmptyTrue() {
+        System.out.println("isEmptyTrue");
+        Quadrant instance = new Quadrant();
+        boolean expResult = true;
+        boolean result = instance.isEmpty();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isEmpty method, of class Quadrant.
+     */
+    @Test
+    public void testIsEmptyFalse() {
+        System.out.println("isEmptyFalse");
+        Quadrant instance = new Quadrant();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                instance.addPiece(i, j, Marble.BLACK);
+            }
+        }
+        boolean expResult = false;
+        boolean result = instance.isEmpty();
+        assertEquals(expResult, result);
+    }
     
 }

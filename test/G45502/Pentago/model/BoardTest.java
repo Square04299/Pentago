@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package G45502.Pentago.model;
 
 import G45502.Pentago.exception.GameException;
@@ -79,6 +74,19 @@ public class BoardTest{
         Board instance = new Board();
         instance.addPiece(x, y, m, v);
         instance.addPiece(x, y, m, v);
+    }
+
+    /**
+     * Test of isEmpty method, of class Board.
+     */
+    @Test
+    public void testIsEmpty() {
+        System.out.println("isEmpty");
+        int value = 0;
+        Board instance = new Board();
+        boolean expResult = true;
+        boolean result = instance.isEmpty(value);
+        assertEquals(expResult, result);
     }
     
 }
