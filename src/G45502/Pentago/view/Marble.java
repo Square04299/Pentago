@@ -16,7 +16,7 @@ public class Marble extends Circle{
     }
 
     private void initialze() {
-        circle = new Circle(25,Color.GREY);
+        circle = new Circle(25,Color.PINK);
         setStyle();
         
     }
