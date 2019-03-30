@@ -19,7 +19,6 @@ public class Game implements Facade {
     public Game() {
         this.board = new Board();
         this.players = new ArrayList<>();
-        this.currentPlayer = players.get(0); //0 will always be WHITE
         this.gameState = State.PLACE;
     }
 
@@ -46,6 +45,7 @@ public class Game implements Facade {
         } else {
             throw new GameException("Too much player");
         }
+        this.currentPlayer = players.get(0);//0 will always be WHITE
     }
 
     @Override
