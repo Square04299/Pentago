@@ -74,26 +74,26 @@ public class Game implements Facade {
     public void placePiece(int x, int y, int q) {
         if (gameState == State.PLACE) {
             board.addPiece(x, y, this.currentPlayer.getColor(), q);
+            this.setState(State.ROTATE);
         } else {
             throw new GameException("You are in the wrong State");
         }
-        gameState = State.ROTATE;
     }
 
     @Override
     public void rotationQuadrantRight(int value) {
         if (gameState == State.ROTATE) {
             this.board.getQuadrant(value).rotateRight();
+            this.setState(State.PLACE);
         }
-        gameState = State.PLACE;
     }
 
     @Override
     public void rotationQuadrantLeft(int value) {
         if (gameState == State.ROTATE) {
             this.board.getQuadrant(value).rotateLeft();
+            this.setState(State.PLACE);
         }
-        gameState = State.PLACE;
     }
 
     @Override

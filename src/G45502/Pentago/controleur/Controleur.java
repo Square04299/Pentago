@@ -27,6 +27,7 @@ public class Controleur {
             view.viewBoard();
             game.placePiece(view.askX(), view.askY(), view.askQuadrant());
             view.askRotate();
+            game.setState(State.PLACE);//Temporary until the rotate function is used
             if (!game.getBoard().isFreePlaceOnBoard()) {
                 game.setState(State.OVER);
             }
