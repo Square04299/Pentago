@@ -1,39 +1,58 @@
 package G45502.Pentago.model;
 
 import G45502.Pentago.exception.GameException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author G45502
  */
 public class Game implements Facade {
-    
-    private final Board board;
-    private final List<Joueur> players;
-    private Joueur currentPlayer;
-    State gameState;
 
-    public Game(List<Joueur> players) {
+    private final Board board;
+    private final List<Player> players;
+    private Player currentPlayer;
+    private State gameState;
+
+    public Game() {
         this.board = new Board();
-        this.players = players;
+        this.players = new ArrayList<>();
         this.currentPlayer = players.get(0); //0 will always be WHITE
-        gameState = State.PLACE;
-    }
-    
-    @Override
-    public Joueur getCurrentPlayer() {
-        return currentPlayer;
+        this.gameState = State.PLACE;
     }
 
     public Board getBoard() {
         return board;
     }
-    
-    public int[][] getQuadrant(int value){
+
+    public int[][] getQuadrant(int value) {
         return board.getQuadrant(value).getQuadrant();
     }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public State getGameState() {
+        return gameState;
+    }
     
+    @Override
+    public void addPlayer(Player player) {
+        if (getPlayers().size() < 2) {
+            players.add(player);
+        } else {
+            throw new GameException("Too much player");
+        }
+    }
+
+    @Override
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
     @Override
     public void changeCurrentPlayer() {
         if (this.currentPlayer.isWhite()) {
@@ -47,38 +66,44 @@ public class Game implements Facade {
     public void placePiece(int x, int y, int q) {
         if (gameState == State.PLACE) {
             board.addPiece(x, y, this.currentPlayer.getColor(), q);
-        }else{
+        } else {
             throw new GameException("You are in the wrong State");
         }
         gameState = State.ROTATE;
     }
 
-//    @Override
-//    public void rotationQuadrant(int value) {
-//
-//    }
+    @Override
+    public void rotationQuadrantRight(int value) {
+        if (gameState == State.ROTATE) {
+            this.board.getQuadrant(value).rotateRight();
+        }
+        gameState = State.PLACE;
+    }
+
+    @Override
+    public void rotationQuadrantLeft(int value) {
+        if (gameState == State.ROTATE) {
+            this.board.getQuadrant(value).rotateLeft();
+        }
+        gameState = State.PLACE;
+    }
 
     @Override
     public boolean isOver() {
         return gameState == State.OVER;
     }
-    
+
     @Override
-    public void setState(State state){
+    public void setState(State state) {
         this.gameState = state;
     }
 
     @Override
-    public Joueur getWinners() {
+    public Player getWinners() {
         if (isOver()) {
             return currentPlayer;
-        }else{
+        } else {
             throw new GameException("There is no winner");
         }
     }
-
-    State getState() {
-        return gameState;
-    }
-
 }

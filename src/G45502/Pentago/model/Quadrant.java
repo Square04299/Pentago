@@ -9,7 +9,7 @@ import G45502.Pentago.exception.GameException;
  */
 public class Quadrant {
     
-    private int[][] quadrant;
+    private final int[][] quadrant;
     private final int MAX_SIZE = 3;
 
     public Quadrant() {

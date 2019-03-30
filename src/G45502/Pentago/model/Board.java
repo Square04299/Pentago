@@ -30,8 +30,17 @@ public class Board {
         this.getQuadrant(q).addPiece(x, y, c);
     }
     
-    boolean isEmpty(int value){
+    boolean isEmptyQuadrant(int value){
         Quadrant empty = this.getQuadrant(value);
         return empty.isEmpty();
+    }
+    
+    public boolean isFreePlaceOnBoard(){
+        for (int i = 0; i < 4; i++) {
+            if(this.isEmptyQuadrant(i)){
+                return true;
+            }
+        }
+        return false;
     }
 }

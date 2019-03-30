@@ -5,17 +5,22 @@ package G45502.Pentago.model;
  * @author G45502
  */
 public interface Facade {
-    Joueur getCurrentPlayer();
+    
+    public void addPlayer(Player player);
+    
+    Player getCurrentPlayer();
     
     void changeCurrentPlayer();
 
     public void placePiece(int x, int y, int q);
 
-    //void rotationQuadrant(int value); Later Implamentation
+    void rotationQuadrantRight(int value);
+    
+    void rotationQuadrantLeft(int value);
 
     boolean isOver();
     
     void setState(State state);
 
-    Joueur getWinners();
+    Player getWinners();
 }
