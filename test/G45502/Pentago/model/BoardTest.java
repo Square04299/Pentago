@@ -80,12 +80,12 @@ public class BoardTest{
      * Test of isEmpty method, of class Board.
      */
     @Test
-    public void testIsEmpty() {
-        System.out.println("isEmpty");
+    public void testisEmptyQuadrant() {
+        System.out.println("isEmptyQuadrant");
         int value = 0;
         Board instance = new Board();
         boolean expResult = true;
-        boolean result = instance.isEmpty(value);
+        boolean result = instance.isEmptyQuadrant(value);
         assertEquals(expResult, result);
     }
     

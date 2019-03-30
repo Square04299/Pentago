@@ -22,14 +22,14 @@ public class GameTest {
     public void testGetCurrentPlayerBlackAndWhite() {
         System.out.println("getCurrentPlayer Black and White");
         
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
-        Joueur result = instance.getCurrentPlayer();
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        
+        Player result = instance.getCurrentPlayer();
         assertEquals(player1, result);
     }
 
@@ -39,15 +39,15 @@ public class GameTest {
     @Test
     public void testChangeCurrentPlayer() {
         System.out.println("changeCurrentPlayer");
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        
         instance.changeCurrentPlayer();
-        Joueur result = instance.getCurrentPlayer();
+        Player result = instance.getCurrentPlayer();
         assertEquals(player2.getColor(), result.getColor());
     }
 
@@ -61,13 +61,13 @@ public class GameTest {
         int y = 0;
         int q = 0;
         
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        
         instance.placePiece(x, y, q);
         int[][] expected = instance.getQuadrant(q);
         
@@ -80,13 +80,12 @@ public class GameTest {
     @Test
     public void testIsOverTrue() {
         System.out.println("isOver");
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
         instance.setState(State.OVER);
         boolean expResult = true;
         boolean result = instance.isOver();
@@ -99,13 +98,12 @@ public class GameTest {
     @Test
     public void testIsOverFalse() {
         System.out.println("isOver");
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
         boolean expResult = false;
         boolean result = instance.isOver();
         assertEquals(expResult, result);
@@ -117,16 +115,15 @@ public class GameTest {
     @Test
     public void testGetWinners() {
         System.out.println("getWinners");
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
         instance.setState(State.OVER);
-        Joueur expResult = player1;
-        Joueur result = instance.getWinners();
+        Player expResult = player1;
+        Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
 
@@ -136,15 +133,14 @@ public class GameTest {
     @Test
     public void testGetCurrentPlayer() {
         System.out.println("getCurrentPlayer");
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
-        Joueur expResult = player1;
-        Joueur result = instance.getCurrentPlayer();
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        Player expResult = player1;
+        Player result = instance.getCurrentPlayer();
         assertEquals(expResult, result);
     }
 
@@ -154,13 +150,12 @@ public class GameTest {
     @Test
     public void testGetBoard() {
         System.out.println("getBoard");
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
         
         Board expResult = instance.getBoard();
         Board result = instance.getBoard();
@@ -174,13 +169,12 @@ public class GameTest {
     public void testGetQuadrant() {
         System.out.println("getQuadrant");
         int value = 0;
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
         int[][] expResult = instance.getQuadrant(value);
         int[][] result = instance.getQuadrant(value);
         assertArrayEquals(expResult, result);
@@ -193,14 +187,13 @@ public class GameTest {
     public void testSetState() {
         System.out.println("setState");
         State state = State.ROTATE;
-        List<Joueur> players = new ArrayList();
-        Joueur player1 = new Joueur("Lucas", Marble.WHITE);
-        Joueur player2 = new Joueur("Christopher", Marble.BLACK);
-        players.add(player1);
-        players.add(player2);
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
         
-        Game instance = new Game(players);
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
         instance.setState(state);
-        assertTrue(instance.getState() == State.ROTATE);
+        assertTrue(instance.getGameState() == State.ROTATE);
     }
 }
