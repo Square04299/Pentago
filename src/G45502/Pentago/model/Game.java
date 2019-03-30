@@ -38,6 +38,14 @@ public class Game implements Facade {
         return gameState;
     }
     
+    public Marble setColor(){
+        if (players.isEmpty()) {
+            return Marble.WHITE;
+        }else{
+            return Marble.BLACK;
+        }
+    }
+    
     @Override
     public void addPlayer(Player player) {
         if (getPlayers().size() < 2) {

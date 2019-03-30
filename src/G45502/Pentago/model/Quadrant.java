@@ -25,6 +25,10 @@ public class Quadrant {
     public int[][] getQuadrant() {
         return quadrant;
     }
+    
+    public int getPoint(int x, int y){
+        return this.quadrant[x][y];
+    }
 
     void addPiece(int x, int y, Marble color){
         if (quadrant[x][y] == -1) {

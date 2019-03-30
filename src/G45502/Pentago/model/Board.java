@@ -18,7 +18,7 @@ public class Board {
         }
     }
     
-    Quadrant getQuadrant(int value){
+    public Quadrant getQuadrant(int value){
         if (value < 0 || value > 4) {
             throw new UnavailablePlace("The Number you gave is out of bound from the list");
         }else{
