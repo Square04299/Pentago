@@ -8,10 +8,10 @@ import javafx.scene.shape.StrokeType;
  *
  * @author G45502
  */
-public class Marble extends Circle{
+public class FxMarble extends Circle{
     private Circle circle;
 
-    public Marble() {
+    public FxMarble() {
         initialze();
     }
 

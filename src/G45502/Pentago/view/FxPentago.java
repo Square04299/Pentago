@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class Pentago extends Application{
+public class FxPentago extends Application{
 
     
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class Pentago extends Application{
     
     @Override
     public void start(Stage primaryStage){
-        Board board = new Board();
+        FxBoard board = new FxBoard();
         primaryStage.setTitle("Pentago");
         Pane root = new Pane();
         root.getChildren().add(board.getBoard());

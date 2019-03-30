@@ -12,11 +12,11 @@ import javafx.scene.layout.RowConstraints;
  *
  * @author G45502
  */
-public class Quadrant extends GridPane{
+public class FxQuadrant extends GridPane{
     private GridPane quadrant;
     private final int MAX_SIZE = 3;
 
-    public Quadrant() {
+    public FxQuadrant() {
         initialze();
     }
 
@@ -25,7 +25,7 @@ public class Quadrant extends GridPane{
         setStyle();
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
-                quadrant.add(new Marble().getCircle(), j, i);
+                quadrant.add(new FxMarble().getCircle(), j, i);
             }
         }
     }
@@ -56,9 +56,5 @@ public class Quadrant extends GridPane{
             quadrant.getRowConstraints().add(row);
         }
         
-    }
-    
-    
-    
-    
+    }  
 }

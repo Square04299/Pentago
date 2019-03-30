@@ -9,12 +9,12 @@ import javafx.scene.layout.RowConstraints;
  *
  * @author G45502
  */
-public class Board extends GridPane {
+public class FxBoard extends GridPane {
 
     private GridPane board;
     private final int MAX_SIZE = 2;
 
-    public Board() {
+    public FxBoard() {
         initialze();
     }
 
@@ -23,7 +23,7 @@ public class Board extends GridPane {
         setStyle();
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
-                board.add(new Quadrant().getQuadrant(), j, i);
+                board.add(new FxQuadrant().getQuadrant(), j, i);
             }
         }
     }
