@@ -1,6 +1,5 @@
 package G45502.Pentago.model;
 
-import G45502.Pentago.exception.GameException;
 import G45502.Pentago.exception.UnavailablePlace;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -11,6 +10,9 @@ import static org.junit.Assert.*;
  */
 public class QuadrantTest {
     
+    /**
+     *
+     */
     public QuadrantTest() {
     }
 

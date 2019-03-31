@@ -4,13 +4,12 @@ import G45502.Pentago.exception.GameException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Observable;
 
 /**
  *
  * @author G45502
  */
-public class Game extends Observable implements Facade {
+public class Game implements Facade {
 
     private final Board board;
     private final List<Player> players;
@@ -115,12 +114,8 @@ public class Game extends Observable implements Facade {
     public void changeCurrentPlayer() {
         if (this.currentPlayer.isWhite()) {
             this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.BLACK);
-            notifyObservers(0);
-            setChanged();
         } else {
             this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.WHITE);
-            notifyObservers(0);
-            setChanged();
         }
         gameState = State.PLACE;
     }
@@ -138,8 +133,6 @@ public class Game extends Observable implements Facade {
         if (gameState == State.PLACE) {
             board.addPiece(x, y, this.currentPlayer.getColor(), q);
             this.setState(State.ROTATE);
-            notifyObservers();
-            setChanged();
         } else {
             throw new GameException("You are in the wrong State");
         }

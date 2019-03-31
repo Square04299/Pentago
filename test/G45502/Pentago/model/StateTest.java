@@ -14,6 +14,9 @@ import static org.junit.Assert.*;
  */
 public class StateTest {
     
+    /**
+     * Builder of State Test
+     */
     public StateTest() {
     }
 

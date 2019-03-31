@@ -1,7 +1,5 @@
 package G45502.Pentago.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -10,7 +8,10 @@ import static org.junit.Assert.*;
  * @author G45502
  */
 public class JoueurTest {
-    
+
+    /**
+     *
+     */
     public JoueurTest() {
     }
 
@@ -49,7 +50,7 @@ public class JoueurTest {
         boolean result = instance.isWhite();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of isWhite method, of class Player.
      */
@@ -70,18 +71,18 @@ public class JoueurTest {
         System.out.println("getPlayer");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game game = new Game();
         game.addPlayer(player1);
         game.addPlayer(player2);
-        
+
         Marble color = Marble.BLACK;
         Player instance = game.getCurrentPlayer();
         Player expResult = player2;
         Player result = instance.getPlayer(game.getPlayers(), color);
         assertEquals(expResult.getColor(), result.getColor());
     }
-    
+
     /**
      * Test of getPlayer method, of class Player.
      */
@@ -90,16 +91,16 @@ public class JoueurTest {
         System.out.println("getPlayerNull");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game game = new Game();
         game.addPlayer(player1);
         game.addPlayer(player2);
-        
+
         Marble color = Marble.BLACK;
         Player instance = game.getCurrentPlayer();
         Player expResult = player2;
         Player result = instance.getPlayer(null, color);
         assertEquals(expResult.getColor(), result.getColor());
     }
-    
+
 }

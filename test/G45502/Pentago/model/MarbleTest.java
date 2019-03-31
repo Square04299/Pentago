@@ -9,8 +9,12 @@ import static org.junit.Assert.*;
  */
 public class MarbleTest {
     
+    /**
+     * Builder of Marble Test
+     */
     public MarbleTest() {
     }
+    
     /**
      * Test of getValue method, of class Marble.
      */

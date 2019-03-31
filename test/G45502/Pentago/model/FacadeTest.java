@@ -10,6 +10,9 @@ import static org.junit.Assert.*;
  */
 public class FacadeTest {
     
+    /**
+     * Build of Facade Test
+     */
     public FacadeTest() {
     }
 

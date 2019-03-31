@@ -27,7 +27,6 @@ public class Controleur {
         this.game = game;
         this.view = view;
         this.fxView = fxView;
-        //game.addObserver(fxView);
     }
 
     /**

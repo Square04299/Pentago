@@ -1,8 +1,6 @@
 package G45502.Pentago.view;
 
-import G45502.Pentago.model.Game;
-import java.util.Observable;
-import java.util.Observer;
+
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -11,11 +9,11 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class FxPentago implements Observer {
+public class FxPentago{
 
-    private Stage stage;
+    private final Stage stage;
     final private Scene scene;
-    private FxBoard board;
+    private final FxBoard board;
     
     /**
      * Start the Gui
@@ -33,13 +31,6 @@ public class FxPentago implements Observer {
 
         scene = new Scene(root);
         stage.setScene(scene);
-        //stage.show();
+        stage.show();
     }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        Game g = (Game) o;
-        System.out.println("Update FxView!");
-    }
-
 }

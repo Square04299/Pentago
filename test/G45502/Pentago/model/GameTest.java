@@ -12,6 +12,9 @@ import static org.junit.Assert.*;
  */
 public class GameTest {
     
+    /**
+     * Builder of Game Test
+     */
     public GameTest() {
     }
 

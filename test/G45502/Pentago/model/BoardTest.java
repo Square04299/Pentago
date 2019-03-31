@@ -10,6 +10,9 @@ import static org.junit.Assert.*;
  */
 public class BoardTest{
     
+    /**
+     * Builder of BoardTest
+     */
     public BoardTest() {
     }
 
