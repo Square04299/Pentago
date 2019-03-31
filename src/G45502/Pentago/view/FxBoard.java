@@ -14,6 +14,9 @@ public class FxBoard extends GridPane {
     private GridPane board;
     private final int MAX_SIZE;
 
+    /**
+     * Builder of board
+     */
     public FxBoard() {
         this.MAX_SIZE = 2;
         initialze();
@@ -29,6 +32,11 @@ public class FxBoard extends GridPane {
         }
     }
 
+    /**
+     * Getter of Board
+     *
+     * @return board
+     */
     public GridPane getBoard() {
         return board;
     }

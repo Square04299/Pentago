@@ -1,6 +1,7 @@
 package G45502.Pentago.model;
 
 import G45502.Pentago.exception.GameException;
+import G45502.Pentago.exception.UnavailablePlace;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -32,7 +33,7 @@ public class QuadrantTest {
     /**
      * Test of addPiece method, of class Quadrant.
      */
-    @Test(expected = GameException.class)
+    @Test(expected = UnavailablePlace.class)
     public void testAddPieceException() {
         System.out.println("addPiece");
         
@@ -121,6 +122,32 @@ public class QuadrantTest {
             }
         }
         boolean expResult = false;
+        boolean result = instance.isEmpty();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getPoint method, of class Quadrant.
+     */
+    @Test
+    public void testGetPoint() {
+        System.out.println("getPoint");
+        int x = 0;
+        int y = 0;
+        Quadrant instance = new Quadrant();
+        int expResult = -1;
+        int result = instance.getPoint(x, y);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isEmpty method, of class Quadrant.
+     */
+    @Test
+    public void testIsEmpty() {
+        System.out.println("isEmpty");
+        Quadrant instance = new Quadrant();
+        boolean expResult = true;
         boolean result = instance.isEmpty();
         assertEquals(expResult, result);
     }

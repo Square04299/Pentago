@@ -3,6 +3,7 @@ package G45502.Pentago.model;
 import G45502.Pentago.exception.GameException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -85,6 +86,7 @@ public class Game implements Facade {
      */
     @Override
     public void addPlayer(Player player) {
+        Objects.requireNonNull(player);
         if (getPlayers().size() < 2) {
             players.add(player);
         } else {
@@ -115,6 +117,7 @@ public class Game implements Facade {
         } else {
             this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.WHITE);
         }
+        gameState = State.PLACE;
     }
 
     /**
@@ -191,7 +194,7 @@ public class Game implements Facade {
      */
     @Override
     public Player getWinners() {
-        if (isOver() && (board.getQuadrant(0).getPoint(0, 0) == 0 || board.getQuadrant(0).getPoint(0, 0) == 1)) {
+        if (isOver() || (board.getQuadrant(0).getPoint(0, 0) == 0 || board.getQuadrant(0).getPoint(0, 0) == 1)) {
             return currentPlayer;
         } else {
             throw new GameException("There is no winner");

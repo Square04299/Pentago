@@ -73,6 +73,26 @@ public class GameTest {
         
         assertTrue(expected[0][0] == 1);
     }
+    
+    /**
+     * Test of placePiece method, of class Game.
+     */
+    @Test(expected = GameException.class)
+    public void testPlacePieceWrongState() {
+        System.out.println("placePieceWrongState");
+        int x = 0;
+        int y = 0;
+        int q = 0;
+        
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
+        
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        instance.setState(State.ROTATE);
+        instance.placePiece(x, y, q);
+    }
 
     /**
      * Test of isOver method, of class Game.
@@ -113,8 +133,8 @@ public class GameTest {
      * Test of getWinners method, of class Game.
      */
     @Test
-    public void testGetWinners() {
-        System.out.println("getWinners");
+    public void testGetWinnersStateOver() {
+        System.out.println("getWinnersStateOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
         
@@ -126,13 +146,52 @@ public class GameTest {
         Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
-
+    
     /**
-     * Test of getCurrentPlayer method, of class Game.
+     * Test of getWinners method, of class Game.
      */
     @Test
-    public void testGetCurrentPlayer() {
-        System.out.println("getCurrentPlayer");
+    public void testGetWinnersPlayer1() {
+        System.out.println("getWinnersStateOver");
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
+        
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        instance.placePiece(0, 0, 0);
+        Player expResult = player1;
+        Player result = instance.getWinners();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of getWinners method, of class Game.
+     */
+    @Test
+    public void testGetWinnersPlayer2() {
+        System.out.println("getWinnersStateOver");
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
+        
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        instance.placePiece(0, 0, 1);
+        instance.setState(State.PLACE);
+        instance.changeCurrentPlayer();
+        instance.placePiece(0, 0, 0);
+        Player expResult = instance.getCurrentPlayer();
+        Player result = instance.getWinners();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of getWinners method, of class Game.
+     */
+    @Test(expected = GameException.class)
+    public void testGetWinnersNoWinner() {
+        System.out.println("getWinnersNoWinner");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
         
@@ -140,9 +199,10 @@ public class GameTest {
         instance.addPlayer(player1);
         instance.addPlayer(player2);
         Player expResult = player1;
-        Player result = instance.getCurrentPlayer();
+        Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
+
 
     /**
      * Test of getBoard method, of class Game.
@@ -195,5 +255,108 @@ public class GameTest {
         instance.addPlayer(player2);
         instance.setState(state);
         assertTrue(instance.getGameState() == State.ROTATE);
+    }
+
+    /**
+     * Test of getPlayers method, of class Game.
+     */
+    @Test(expected = AssertionError.class)
+    public void testGetPlayersNull() {
+        System.out.println("getPlayers");
+        Game instance = new Game();
+        List<Player> expResult = null;
+        List<Player> result = instance.getPlayers();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of getPlayers method, of class Game.
+     */
+    @Test
+    public void testGetPlayers() {
+        System.out.println("getPlayers");
+        Game instance = new Game();
+        List<Player> expResult = new ArrayList<>();
+        List<Player> result = instance.getPlayers();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getGameState method, of class Game.
+     */
+    @Test
+    public void testGetGameState() {
+        System.out.println("getGameState");
+        Game instance = new Game();
+        State expResult = State.PLACE;
+        State result = instance.getGameState();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setColor method, of class Game.
+     */
+    @Test
+    public void testSetColorWhite() {
+        System.out.println("setColorWhite");
+        Game instance = new Game();
+        Marble expResult = Marble.WHITE;
+        Marble result = instance.setColor();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of setColor method, of class Game.
+     */
+    @Test
+    public void testSetColorBlack() {
+        System.out.println("setColorBlack");
+        Player player1 = new Player("Lucas", Marble.WHITE);
+        Player player2 = new Player("Christopher", Marble.BLACK);
+        
+        Game instance = new Game();
+        instance.addPlayer(player1);
+        instance.addPlayer(player2);
+        Marble expResult = Marble.BLACK;
+        Marble result = instance.setColor();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of addPlayer method, of class Facade.
+     */
+    @Test
+    public void testAddPlayer() {
+        System.out.println("addPlayer");
+        Player player = new Player("Chris", Marble.BLACK);
+        Game instance = new Game();
+        instance.addPlayer(player);
+        assertTrue(instance.getPlayers().size() > 0);
+    }
+
+    /**
+     * Test of rotationQuadrantRight method, of class Facade.
+     */
+    @Test
+    public void testRotationQuadrantRight() {
+        System.out.println("rotationQuadrantRight");
+        int value = 0;
+        Game instance = new Game();
+        int[][] exGame = instance.getQuadrant(value);
+        instance.rotationQuadrantRight(value);
+        assertTrue(instance.getQuadrant(value) == exGame);
+    }
+
+    /**
+     * Test of rotationQuadrantLeft method, of class Facade.
+     */
+    @Test
+    public void testRotationQuadrantLeft() {
+        System.out.println("rotationQuadrantLeft");
+        int value = 0;
+        Game instance = new Game();
+        int[][] exGame = instance.getQuadrant(value);
+        instance.rotationQuadrantLeft(value);
+        assertTrue(instance.getQuadrant(value) == exGame);
     }
 }

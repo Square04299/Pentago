@@ -1,6 +1,6 @@
 package G45502.Pentago.model;
 
-import G45502.Pentago.exception.GameException;
+import G45502.Pentago.exception.UnavailablePlace;
 
 /**
  *
@@ -50,7 +50,7 @@ public class Quadrant {
         if (quadrant[x][y] == -1) {
             this.quadrant[x][y] = color.getValue();
         } else {
-            throw new GameException("A Marble is already in this slot");
+            throw new UnavailablePlace("A Marble is already in this slot");
         }
     }
 

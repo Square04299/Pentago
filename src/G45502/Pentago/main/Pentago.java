@@ -6,7 +6,7 @@ import G45502.Pentago.view.View;
 
 /**
  *
- * @author Square
+ * @author G45502
  */
 public class Pentago {
     

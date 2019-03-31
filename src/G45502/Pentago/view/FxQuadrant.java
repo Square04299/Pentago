@@ -1,6 +1,5 @@
 package G45502.Pentago.view;
 
-
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.layout.ColumnConstraints;
@@ -12,10 +11,14 @@ import javafx.scene.layout.RowConstraints;
  *
  * @author G45502
  */
-public class FxQuadrant extends GridPane{
+public class FxQuadrant extends GridPane {
+
     private GridPane quadrant;
     private final int MAX_SIZE;
 
+    /**
+     * Builder of Quadrant
+     */
     public FxQuadrant() {
         this.MAX_SIZE = 3;
         initialze();
@@ -31,6 +34,11 @@ public class FxQuadrant extends GridPane{
         }
     }
 
+    /**
+     * Getter of quadrant
+     *
+     * @return
+     */
     public GridPane getQuadrant() {
         return quadrant;
     }
@@ -39,7 +47,7 @@ public class FxQuadrant extends GridPane{
         quadrant.setVgap(10);
         quadrant.setHgap(10);
         quadrant.setStyle("-fx-background-color:#ba3030; -fx-opacity:0.5;");
-        
+
         for (int i = 0; i < MAX_SIZE; i++) {
             ColumnConstraints col = new ColumnConstraints();
             col.setHgrow(Priority.SOMETIMES);
@@ -56,6 +64,6 @@ public class FxQuadrant extends GridPane{
             row.setValignment(VPos.CENTER);
             quadrant.getRowConstraints().add(row);
         }
-        
-    }  
+
+    }
 }

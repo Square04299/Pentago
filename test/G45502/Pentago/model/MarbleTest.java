@@ -22,4 +22,15 @@ public class MarbleTest {
         int result = instance.getValue();
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of values method, of class Marble.
+     */
+    @Test
+    public void testValues() {
+        System.out.println("values");
+        Marble[] expResult = {Marble.BLACK,Marble.WHITE};
+        Marble[] result = Marble.values();
+        assertArrayEquals(expResult, result);
+    }
 }

@@ -1,5 +1,6 @@
 package G45502.Pentago.controleur;
 
+import G45502.Pentago.exception.GameException;
 import G45502.Pentago.model.Game;
 import G45502.Pentago.model.State;
 import G45502.Pentago.view.View;
@@ -33,10 +34,9 @@ public class Controleur {
         }
         while (!game.isOver()) {
             view.viewBoard();
-            game.placePiece(view.askX(), view.askY(), view.askQuadrant());
+            placePiece();
             view.askRotate();
-            game.setState(State.PLACE);//Temporary until the rotate function is used
-            if (!game.getBoard().isFreePlaceOnBoard()) {
+            if (!game.getBoard().isFreePlaceOnBoard() || (game.getBoard().getQuadrant(0).getPoint(0, 0) == 0 || game.getBoard().getQuadrant(0).getPoint(0, 0) == 1)) {
                 game.setState(State.OVER);
             }
             if (!game.isOver()) {
@@ -44,6 +44,18 @@ public class Controleur {
             }
         }
         view.showWinner(game.getWinners());
+    }
+
+    /**
+     * Validate the insertion of the piece
+     */
+    public void placePiece() {
+        try {
+            game.placePiece(view.askX(), view.askY(), view.askQuadrant());
+        } catch (GameException ex) {
+            view.placePieceError();
+            placePiece();
+        }
     }
 
 }
