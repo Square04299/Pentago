@@ -12,9 +12,10 @@ import javafx.scene.layout.RowConstraints;
 public class FxBoard extends GridPane {
 
     private GridPane board;
-    private final int MAX_SIZE = 2;
+    private final int MAX_SIZE;
 
     public FxBoard() {
+        this.MAX_SIZE = 2;
         initialze();
     }
 

@@ -4,23 +4,31 @@ import G45502.Pentago.model.Game;
 import G45502.Pentago.model.State;
 import G45502.Pentago.view.View;
 
-
 /**
  *
  * @author G45502
  */
 public class Controleur {
-    
+
     private final Game game;
     private final View view;
 
+    /**
+     * Builder of Controleur
+     *
+     * @param game
+     * @param view
+     */
     public Controleur(Game game, View view) {
         this.game = game;
         this.view = view;
     }
-    
-    public void startGame(){
-        while (game.getPlayers().size() < 2) {            
+
+    /**
+     * Start the game
+     */
+    public void startGame() {
+        while (game.getPlayers().size() < 2) {
             game.addPlayer(view.askPlayer());
         }
         while (!game.isOver()) {
@@ -37,8 +45,5 @@ public class Controleur {
         }
         view.showWinner(game.getWinners());
     }
-    
-    
 
-   
 }

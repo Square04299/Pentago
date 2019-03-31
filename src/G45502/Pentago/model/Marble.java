@@ -5,7 +5,15 @@ package G45502.Pentago.model;
  * @author G45502
  */
 public enum Marble {
-    BLACK(0), WHITE(1);
+
+    /**
+     * Color of the Marble, with a value of 0
+     */
+    BLACK(0),
+    /**
+     * Color of the Marble, with a value of 1
+     */
+    WHITE(1);
 
     private final int value;
 
@@ -13,6 +21,11 @@ public enum Marble {
         this.value = value_;
     }
 
+    /**
+     * Getter of value
+     *
+     * @return Value of the Marble
+     */
     public int getValue() {
         return value;
     }

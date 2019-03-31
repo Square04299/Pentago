@@ -1,6 +1,5 @@
 package G45502.Pentago.view;
 
-import G45502.Pentago.model.Board;
 import G45502.Pentago.model.Game;
 import G45502.Pentago.model.Player;
 import G45502.Pentago.model.Quadrant;
@@ -36,12 +35,13 @@ public class View {
     }
     
     public String c(Quadrant q,int x, int y){
-        if(q.getPoint(x, y) == 0) {
-            return "0";
-        } else if(q.getPoint(x, y) == 1){
-            return "1";
-        }else{
-            return ".";
+        switch(q.getPoint(x, y)){
+            case 0:
+                return "0";
+            case 1:
+                return "1";
+            default:
+                return ".";
         }
     }
 

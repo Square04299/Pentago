@@ -12,15 +12,31 @@ public class Player {
     private final String name;
     private final Marble color;
 
+    /**
+     * Builder of Player Will Build the name and marble color
+     *
+     * @param name name of the player
+     * @param color Color of the Marble the Player will get
+     */
     public Player(String name, Marble color) {
         this.name = name;
         this.color = color;
     }
 
+    /**
+     * Getter of name
+     *
+     * @return name of the player
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Getter Color
+     *
+     * @return color of the marble
+     */
     public Marble getColor() {
         return color;
     }

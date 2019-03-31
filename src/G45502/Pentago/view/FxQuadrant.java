@@ -14,9 +14,10 @@ import javafx.scene.layout.RowConstraints;
  */
 public class FxQuadrant extends GridPane{
     private GridPane quadrant;
-    private final int MAX_SIZE = 3;
+    private final int MAX_SIZE;
 
     public FxQuadrant() {
+        this.MAX_SIZE = 3;
         initialze();
     }
 
