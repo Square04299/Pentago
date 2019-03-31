@@ -1,17 +1,20 @@
 package G45502.Pentago.view;
 
+import G45502.Pentago.model.Player;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Text;
 
 /**
  *
  * @author G45502
  */
-public class FxBoard extends GridPane {
+public class FxBoard /*extends GridPane*/ {
 
     private GridPane board;
+    private Text text;
     private final int MAX_SIZE;
 
     /**
@@ -30,6 +33,8 @@ public class FxBoard extends GridPane {
                 board.add(new FxQuadrant().getQuadrant(), j, i);
             }
         }
+        
+        text = new Text(0, 620, "Player that is playing : ");
     }
 
     /**
@@ -39,6 +44,19 @@ public class FxBoard extends GridPane {
      */
     public GridPane getBoard() {
         return board;
+    }
+    
+    /**
+     * Getter of Board
+     *
+     * @return board
+     */
+    public Text getText() {
+        return text;
+    }
+    
+    void setText(Player currentPlayer) {
+        this.text.setText("Player that is playing : " + currentPlayer.getName());
     }
 
     private void setStyle() {

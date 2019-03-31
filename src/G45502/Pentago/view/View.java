@@ -191,7 +191,7 @@ public class View {
      * Print that a player has already placed a marble in this slot
      */
     public void placePieceError() {
-        System.out.println(Color.toRed("A merble is already in this slot\n"
+        System.out.println(Color.toRed("A marble is already in this slot\n"
                 + "Please put a free spot on the board"));
     }
 }

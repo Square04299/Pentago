@@ -1,8 +1,9 @@
 package G45502.Pentago.controleur;
 
-import G45502.Pentago.exception.GameException;
+import G45502.Pentago.exception.UnavailablePlace;
 import G45502.Pentago.model.Game;
 import G45502.Pentago.model.State;
+import G45502.Pentago.view.FxPentago;
 import G45502.Pentago.view.View;
 
 /**
@@ -13,16 +14,20 @@ public class Controleur {
 
     private final Game game;
     private final View view;
+    private final FxPentago fxView;
 
     /**
      * Builder of Controleur
      *
      * @param game
      * @param view
+     * @param fxView
      */
-    public Controleur(Game game, View view) {
+    public Controleur(Game game, View view, FxPentago fxView) {
         this.game = game;
         this.view = view;
+        this.fxView = fxView;
+        //game.addObserver(fxView);
     }
 
     /**
@@ -43,6 +48,7 @@ public class Controleur {
                 game.changeCurrentPlayer();
             }
         }
+        view.viewBoard();
         view.showWinner(game.getWinners());
     }
 
@@ -52,7 +58,7 @@ public class Controleur {
     public void placePiece() {
         try {
             game.placePiece(view.askX(), view.askY(), view.askQuadrant());
-        } catch (GameException ex) {
+        } catch (UnavailablePlace ex) {
             view.placePieceError();
             placePiece();
         }

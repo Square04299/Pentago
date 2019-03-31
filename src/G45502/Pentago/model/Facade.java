@@ -4,7 +4,7 @@ package G45502.Pentago.model;
  *
  * @author G45502
  */
-public interface Facade {
+public interface Facade{
 
     /**
      * Will add a player to the list of all players

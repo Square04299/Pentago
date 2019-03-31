@@ -1,6 +1,8 @@
 package G45502.Pentago.view;
 
-import javafx.application.Application;
+import G45502.Pentago.model.Game;
+import java.util.Observable;
+import java.util.Observer;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -9,55 +11,35 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class FxPentago extends Application {
+public class FxPentago implements Observer {
 
-    /**
-     * Will launch the game with the game and view created
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    /**
-     * Show when the Gui stops
-     *
-     * @throws Exception
-     */
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        System.out.println("Stopping GUI");
-    }
-
-    /**
-     * Show when Gui starts
-     *
-     * @throws Exception
-     */
-    @Override
-    public void init() throws Exception {
-        super.init();
-        System.out.println("Starting GUI");
-    }
-
+    private Stage stage;
+    final private Scene scene;
+    private FxBoard board;
+    
     /**
      * Start the Gui
      *
      * @param primaryStage Main scene
      */
-    @Override
-    public void start(Stage primaryStage) {
-        FxBoard board = new FxBoard();
+    public FxPentago(Stage primaryStage) {
+        this.stage = primaryStage;
+        
+        board = new FxBoard();
         primaryStage.setTitle("Pentago");
+        primaryStage.setResizable(false);
         Pane root = new Pane();
-        root.getChildren().add(board.getBoard());
+        root.getChildren().addAll(board.getBoard(), board.getText());
 
-        Scene primaryScene = new Scene(root);
-        primaryStage.setScene(primaryScene);
-        primaryStage.show();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        //stage.show();
+    }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        Game g = (Game) o;
+        System.out.println("Update FxView!");
     }
 
 }

@@ -2,13 +2,18 @@ package G45502.Pentago.main;
 
 import G45502.Pentago.controleur.Controleur;
 import G45502.Pentago.model.Game;
+import G45502.Pentago.model.Marble;
+import G45502.Pentago.model.Player;
+import G45502.Pentago.view.FxPentago;
 import G45502.Pentago.view.View;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
  *
  * @author G45502
  */
-public class Pentago {
+public class Pentago extends Application{
     
     /**
      * Will launch the game with the game and view created
@@ -16,10 +21,15 @@ public class Pentago {
      * @param args
      */
     public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage){
         Game game = new Game();
         View view = new View(game);
-        Controleur controleur = new Controleur(game, view);
+        FxPentago fxView = new FxPentago(primaryStage);
+        Controleur controleur = new Controleur(game, view, fxView);
         controleur.startGame();
-
     }
 }

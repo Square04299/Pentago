@@ -1,10 +1,12 @@
 package G45502.Pentago.model;
 
+import java.util.Observable;
+
 /**
  *
  * @author G45502
  */
-public enum Marble {
+public enum Marble{
 
     /**
      * Color of the Marble, with a value of 0
