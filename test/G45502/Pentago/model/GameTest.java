@@ -72,9 +72,9 @@ public class GameTest {
         instance.addPlayer(player2);
         
         instance.placePiece(x, y, q);
-        int[][] expected = instance.getQuadrant(q);
+        Quadrant expected = instance.getQuadrant(q);
         
-        assertTrue(expected[0][0] == 1);
+        assertTrue(expected.getPoint(0, 0) == Marble.WHITE);
     }
     
     /**
@@ -192,7 +192,7 @@ public class GameTest {
     /**
      * Test of getWinners method, of class Game.
      */
-    @Test(expected = GameException.class)
+    @Test
     public void testGetWinnersNoWinner() {
         System.out.println("getWinnersNoWinner");
         Player player1 = new Player("Lucas", Marble.WHITE);
@@ -201,7 +201,7 @@ public class GameTest {
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
-        Player expResult = player1;
+        Player expResult = null;
         Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
@@ -238,9 +238,9 @@ public class GameTest {
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
-        int[][] expResult = instance.getQuadrant(value);
-        int[][] result = instance.getQuadrant(value);
-        assertArrayEquals(expResult, result);
+        Quadrant expResult = instance.getQuadrant(value);
+        Quadrant result = instance.getQuadrant(value);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -345,7 +345,7 @@ public class GameTest {
         System.out.println("rotationQuadrantRight");
         int value = 0;
         Game instance = new Game();
-        int[][] exGame = instance.getQuadrant(value);
+        Quadrant exGame = instance.getQuadrant(value);
         instance.rotationQuadrantRight(value);
         assertTrue(instance.getQuadrant(value) == exGame);
     }
@@ -358,7 +358,7 @@ public class GameTest {
         System.out.println("rotationQuadrantLeft");
         int value = 0;
         Game instance = new Game();
-        int[][] exGame = instance.getQuadrant(value);
+        Quadrant exGame = instance.getQuadrant(value);
         instance.rotationQuadrantLeft(value);
         assertTrue(instance.getQuadrant(value) == exGame);
     }

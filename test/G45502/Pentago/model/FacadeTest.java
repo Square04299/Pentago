@@ -31,7 +31,7 @@ public class FacadeTest {
     /**
      * Test of addPlayer method, of class Facade.
      */
-    @Test(expected = GameException.class)
+    @Test
     public void testAddPlayerToManyPlayer() {
         System.out.println("addPlayerToManyPlayer");
         Player player = new Player("Chris", Marble.BLACK);
@@ -110,9 +110,9 @@ public class FacadeTest {
         instance.addPlayer(player2);
         
         instance.placePiece(x, y, q);
-        int[][] expected = instance.getQuadrant(q);
+        Quadrant expected = instance.getQuadrant(q);
         
-        assertTrue(expected[0][0] == 1);
+        assertTrue(expected.getPoint(0, 0) == Marble.WHITE);
     }
 
     /**
@@ -123,7 +123,7 @@ public class FacadeTest {
         System.out.println("rotationQuadrantRight");
         int value = 0;
         Game instance = new Game();
-        int[][] exGame = instance.getQuadrant(value);
+        Quadrant exGame = instance.getQuadrant(value);
         instance.rotationQuadrantRight(value);
         assertTrue(instance.getQuadrant(value) == exGame);
     }
@@ -136,7 +136,7 @@ public class FacadeTest {
         System.out.println("rotationQuadrantLeft");
         int value = 0;
         Game instance = new Game();
-        int[][] exGame = instance.getQuadrant(value);
+        Quadrant exGame = instance.getQuadrant(value);
         instance.rotationQuadrantLeft(value);
         assertTrue(instance.getQuadrant(value) == exGame);
     }

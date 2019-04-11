@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
  *
  * @author G45502
  */
-public class FxBoard /*extends GridPane*/ {
+public class FxBoard extends GridPane {
 
     private GridPane board;
     private Text text;
@@ -33,7 +33,6 @@ public class FxBoard /*extends GridPane*/ {
                 board.add(new FxQuadrant().getQuadrant(), j, i);
             }
         }
-        
         text = new Text(0, 620, "Player that is playing : ");
     }
 
@@ -69,14 +68,14 @@ public class FxBoard /*extends GridPane*/ {
             col.setHgrow(Priority.SOMETIMES);
             col.setMinWidth(10);
             col.setPrefWidth(100);
-            board.getColumnConstraints().add(col);
-        }
-        for (int i = 0; i < MAX_SIZE; i++) {
+            
             RowConstraints row = new RowConstraints();
             row.setVgrow(Priority.SOMETIMES);
             row.setMinHeight(10);
             row.setPrefHeight(30);
+            
             board.getRowConstraints().add(row);
+            board.getColumnConstraints().add(col);
         }
     }
 }

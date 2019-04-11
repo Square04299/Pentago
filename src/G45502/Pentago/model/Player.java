@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
+ * Description of a player with the color of the marble and his name
  * @author G45502
  */
 public class Player {

@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class JoueurTest {
 
     /**
-     *
+     * Builder for the test
      */
     public JoueurTest() {
     }

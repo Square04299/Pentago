@@ -56,8 +56,8 @@ public class BoardTest{
         Board expectedBoard = new Board();
         expectedBoard.addPiece(x, y, m, v);
         
-        int[][]instance = instanceBoard.getQuadrant(v).getQuadrant();
-        int[][]expected = expectedBoard.getQuadrant(v).getQuadrant();
+        Marble[][]instance = instanceBoard.getQuadrant(v).getQuadrant();
+        Marble[][]expected = expectedBoard.getQuadrant(v).getQuadrant();
         
         assertEquals(expected[0][0],instance[0][0]);
     }

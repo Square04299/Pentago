@@ -33,7 +33,7 @@ public class MarbleTest {
     @Test
     public void testValues() {
         System.out.println("values");
-        Marble[] expResult = {Marble.BLACK,Marble.WHITE};
+        Marble[] expResult = {Marble.BLACK,Marble.WHITE,Marble.EMPTY};
         Marble[] result = Marble.values();
         assertArrayEquals(expResult, result);
     }

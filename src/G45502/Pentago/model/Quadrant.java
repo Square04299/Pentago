@@ -3,12 +3,12 @@ package G45502.Pentago.model;
 import G45502.Pentago.exception.UnavailablePlace;
 
 /**
- *
+ * One of the 4 square of the board
  * @author G45502
  */
 public class Quadrant {
 
-    private final int[][] quadrant;
+    private final Marble[][] quadrant;
     private final int MAX_SIZE;
 
     /**
@@ -16,10 +16,10 @@ public class Quadrant {
      */
     public Quadrant() {
         this.MAX_SIZE = 3;
-        this.quadrant = new int[MAX_SIZE][MAX_SIZE];
+        this.quadrant = new Marble[MAX_SIZE][MAX_SIZE];
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
-                this.quadrant[i][j] = -1;
+                this.quadrant[i][j] = Marble.EMPTY;
             }
 
         }
@@ -28,10 +28,10 @@ public class Quadrant {
     /**
      * Getter of Quadrant
      *
-     * @return 2d Array of int
+     * @return 2d Array of Marble
      */
-    public int[][] getQuadrant() {
-        int[][] returnQ = quadrant;
+    public Marble[][] getQuadrant() {
+        Marble[][] returnQ = quadrant;
         return returnQ;
     }
 
@@ -39,24 +39,23 @@ public class Quadrant {
      * Get the value of a point in the array
      *
      * @param x x axis
-     * @param y yaxis
+     * @param y y axis
      * @return the value of the cell
      */
-    public int getPoint(int x, int y) {
+    public Marble getPoint(int x, int y) {
         return this.quadrant[x][y];
     }
 
     void addPiece(int x, int y, Marble color) {
-        if (quadrant[x][y] == -1) {
-            this.quadrant[x][y] = color.getValue();
-        } else {
+        if (quadrant[x][y] != Marble.EMPTY) {
             throw new UnavailablePlace("A Marble is already in this slot");
         }
+        this.quadrant[x][y] = color;
     }
 
     void rotateLeft() {
         for (int j = 0; j < 2; j++) {
-            int temp = this.quadrant[0][j]; //Save [0][0]
+            Marble temp = this.quadrant[0][j]; //Save [0][0]
             this.quadrant[0][j] = this.quadrant[j][MAX_SIZE - 1]; //Move [0][2] to [0][0]
             this.quadrant[j][MAX_SIZE - 1] = this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j];
             this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j] = this.quadrant[MAX_SIZE - 1 - j][0];
@@ -73,7 +72,7 @@ public class Quadrant {
     boolean isEmpty() {
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
-                if (this.quadrant[i][j] == -1) {
+                if (this.quadrant[i][j] == Marble.EMPTY) {
                     return true;
                 }
             }

@@ -54,16 +54,15 @@ public class FxQuadrant extends GridPane {
             col.setMinWidth(10);
             col.setPrefWidth(100);
             col.setHalignment(HPos.CENTER);
-            quadrant.getColumnConstraints().add(col);
-        }
-        for (int i = 0; i < MAX_SIZE; i++) {
+            
             RowConstraints row = new RowConstraints();
             row.setVgrow(Priority.SOMETIMES);
             row.setMinHeight(10);
             row.setPrefHeight(30);
             row.setValignment(VPos.CENTER);
+            
             quadrant.getRowConstraints().add(row);
+            quadrant.getColumnConstraints().add(col);
         }
-
     }
 }

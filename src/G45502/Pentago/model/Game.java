@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
+ * All methode that will help the controleur manage the game
  * @author G45502
  */
 public class Game implements Facade {
@@ -42,8 +42,8 @@ public class Game implements Facade {
      * @param value Which quadrant to pick
      * @return 2d array of the selected Quadrant
      */
-    public int[][] getQuadrant(int value) {
-        return board.getQuadrant(value).getQuadrant();
+    public Quadrant getQuadrant(int value) {
+        return board.getQuadrant(value);//.getQuadrant();
     }
 
     /**
@@ -70,6 +70,7 @@ public class Game implements Facade {
      * @return White of the list of player is empty, Black if at least 1 player
      * is in the list of Players
      */
+    @Override
     public Marble setColor() {
         if (players.isEmpty()) {
             return Marble.WHITE;
@@ -87,11 +88,10 @@ public class Game implements Facade {
     @Override
     public void addPlayer(Player player) {
         Objects.requireNonNull(player);
-        if (getPlayers().size() < 2) {
-            players.add(player);
-        } else {
+        if (getPlayers().size() > 2) {
             throw new GameException("Too much player");
         }
+        players.add(player);
         this.currentPlayer = players.get(0);//0 will always be WHITE
     }
 
@@ -107,17 +107,19 @@ public class Game implements Facade {
 
     /**
      * Will change the current player If the current player is White it will
-     * change the currentplayer to the player that has the black marble same
-     * thing will happening in the oppisite way
+     * change the currentPlayer to the player that has the black marble same
+     * thing will happening in the opposite way
      */
     @Override
     public void changeCurrentPlayer() {
-        if (this.currentPlayer.isWhite()) {
-            this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.BLACK);
-        } else {
-            this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.WHITE);
+        if (!isOver()) {
+            if (this.currentPlayer.isWhite()) {
+                this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.BLACK);
+            } else {
+                this.currentPlayer = this.currentPlayer.getPlayer(players, Marble.WHITE);
+            }
+            gameState = State.PLACE;
         }
-        gameState = State.PLACE;
     }
 
     /**
@@ -130,12 +132,11 @@ public class Game implements Facade {
      */
     @Override
     public void placePiece(int x, int y, int q) {
-        if (gameState == State.PLACE) {
-            board.addPiece(x, y, this.currentPlayer.getColor(), q);
-            this.setState(State.ROTATE);
-        } else {
+        if (gameState != State.PLACE) {
             throw new GameException("You are in the wrong State");
         }
+        board.addPiece(x, y, this.currentPlayer.getColor(), q);
+        this.setState(State.ROTATE);
     }
 
     /**
@@ -171,6 +172,11 @@ public class Game implements Facade {
      */
     @Override
     public boolean isOver() {
+        if (!this.getBoard().isFreePlaceOnBoard()
+                || (this.getQuadrant(0).getPoint(0, 0) == Marble.BLACK
+                || this.getQuadrant(0).getPoint(0, 0) == Marble.WHITE)) {
+            this.setState(State.OVER);
+        }
         return gameState == State.OVER;
     }
 
@@ -194,10 +200,11 @@ public class Game implements Facade {
      */
     @Override
     public Player getWinners() {
-        if (isOver() || (board.getQuadrant(0).getPoint(0, 0) == 0 || board.getQuadrant(0).getPoint(0, 0) == 1)) {
+        if (isOver()
+                || (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK
+                || board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE)) {
             return currentPlayer;
-        } else {
-            throw new GameException("There is no winner");
         }
+        return null;
     }
 }

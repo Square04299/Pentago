@@ -1,9 +1,7 @@
 package G45502.Pentago.controleur;
 
 import G45502.Pentago.exception.UnavailablePlace;
-import G45502.Pentago.model.Game;
-import G45502.Pentago.model.State;
-import G45502.Pentago.view.FxPentago;
+import G45502.Pentago.model.Facade;
 import G45502.Pentago.view.View;
 
 /**
@@ -12,40 +10,31 @@ import G45502.Pentago.view.View;
  */
 public class Controleur {
 
-    private final Game game;
+    private final Facade game;
     private final View view;
-    private final FxPentago fxView;
 
     /**
      * Builder of Controleur
      *
-     * @param game
-     * @param view
-     * @param fxView
+     * @param game controle the flow of the game
+     * @param view show the player what is need to do
      */
-    public Controleur(Game game, View view, FxPentago fxView) {
+    public Controleur(Facade game, View view) {
         this.game = game;
         this.view = view;
-        this.fxView = fxView;
     }
 
     /**
      * Start the game
      */
     public void startGame() {
-        while (game.getPlayers().size() < 2) {
-            game.addPlayer(view.askPlayer());
-        }
+        game.addPlayer(view.askPlayer());
+        game.addPlayer(view.askPlayer());
         while (!game.isOver()) {
             view.viewBoard();
             placePiece();
             view.askRotate();
-            if (!game.getBoard().isFreePlaceOnBoard() || (game.getBoard().getQuadrant(0).getPoint(0, 0) == 0 || game.getBoard().getQuadrant(0).getPoint(0, 0) == 1)) {
-                game.setState(State.OVER);
-            }
-            if (!game.isOver()) {
-                game.changeCurrentPlayer();
-            }
+            game.changeCurrentPlayer();
         }
         view.viewBoard();
         view.showWinner(game.getWinners());
@@ -56,7 +45,10 @@ public class Controleur {
      */
     public void placePiece() {
         try {
-            game.placePiece(view.askX(), view.askY(), view.askQuadrant());
+            int x = view.askX();
+            int y = view.askY();
+            int q = view.askQuadrant();
+            game.placePiece(x, y, q);
         } catch (UnavailablePlace ex) {
             view.placePieceError();
             placePiece();

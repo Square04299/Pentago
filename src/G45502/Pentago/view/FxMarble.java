@@ -20,7 +20,7 @@ public class FxMarble extends Circle {
     }
 
     private void initialze() {
-        circle = new Circle(25, Color.PINK);
+        circle = new Circle(30, Color.PINK);
         setStyle();
 
     }
@@ -45,8 +45,7 @@ public class FxMarble extends Circle {
 
     private void setStyle() {
         circle.setStroke(Color.BLACK);
+        circle.setStrokeWidth(3);
         circle.setStrokeType(StrokeType.INSIDE);
-
     }
-
 }

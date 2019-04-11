@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class QuadrantTest {
     
     /**
-     *
+     * Build for the test
      */
     public QuadrantTest() {
     }
@@ -24,11 +24,11 @@ public class QuadrantTest {
         System.out.println("addPiece");
         Quadrant instance = new Quadrant();
         instance.addPiece(0, 0, Marble.BLACK);
-        int[][] result = instance.getQuadrant();
+        Marble[][] result = instance.getQuadrant();
         
         Quadrant expected = new Quadrant();
-        int[][] expected1 = expected.getQuadrant();
-        expected1[0][0] = 0;
+        Marble[][] expected1 = expected.getQuadrant();
+        expected1[0][0] = Marble.BLACK;
         assertTrue(result[0][0] == expected1[0][0]);
     }
     
@@ -61,8 +61,8 @@ public class QuadrantTest {
         Quadrant expected = new Quadrant();
         expected.addPiece(2, 0, Marble.WHITE);
         
-        int[][] instance1 = instance.getQuadrant();
-        int[][] expected1 = expected.getQuadrant();
+        Marble[][] instance1 = instance.getQuadrant();
+        Marble[][] expected1 = expected.getQuadrant();
         
         assertEquals(expected1[2][0], instance1[2][0]);
     }
@@ -81,8 +81,8 @@ public class QuadrantTest {
         Quadrant expected = new Quadrant();
         expected.addPiece(0, 2, Marble.WHITE);
         
-        int[][] instance1 = instance.getQuadrant();
-        int[][] expected1 = expected.getQuadrant();
+        Marble[][] instance1 = instance.getQuadrant();
+        Marble[][] expected1 = expected.getQuadrant();
         
         assertEquals(expected1[0][2], instance1[0][2]);
     }
@@ -94,8 +94,8 @@ public class QuadrantTest {
     public void testGetQuadrant() {
         System.out.println("getQuadrant");
         Quadrant instance = new Quadrant();
-        int[][] expResult = instance.getQuadrant();
-        int[][] result = instance.getQuadrant();
+        Marble[][] expResult = instance.getQuadrant();
+        Marble[][] result = instance.getQuadrant();
         assertArrayEquals(expResult, result);
     }
 
@@ -137,8 +137,8 @@ public class QuadrantTest {
         int x = 0;
         int y = 0;
         Quadrant instance = new Quadrant();
-        int expResult = -1;
-        int result = instance.getPoint(x, y);
+        Marble expResult = Marble.EMPTY;
+        Marble result = instance.getPoint(x, y);
         assertEquals(expResult, result);
     }
 

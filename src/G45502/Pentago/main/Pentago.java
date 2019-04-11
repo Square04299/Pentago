@@ -1,37 +1,24 @@
 package G45502.Pentago.main;
 
 import G45502.Pentago.controleur.Controleur;
+import G45502.Pentago.model.Facade;
 import G45502.Pentago.model.Game;
-import G45502.Pentago.view.FxPentago;
 import G45502.Pentago.view.View;
-import javafx.application.Application;
-import javafx.stage.Stage;
 
 /**
  *
  * @author G45502
  */
-public class Pentago extends Application{
-    
+public class Pentago {
+
     /**
-     * Will launch the game with the game and view created
-     *
+     * Start the view and Game
      * @param args
      */
     public static void main(String[] args) {
-        launch(args);
-    }
-
-    /**
-     *  Start the view FxView and Game
-     * @param primaryStage
-     */
-    @Override
-    public void start(Stage primaryStage){
-        Game game = new Game();
+        Facade game = new Game();
         View view = new View(game);
-        FxPentago fxView = new FxPentago(primaryStage);
-        Controleur controleur = new Controleur(game, view, fxView);
+        Controleur controleur = new Controleur(game, view);
         controleur.startGame();
     }
 }

@@ -1,7 +1,9 @@
 package G45502.Pentago.view;
 
-
+import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -9,27 +11,31 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class FxPentago{
+public class FxPentago extends Application {
 
-    private final Stage stage;
-    final private Scene scene;
-    private final FxBoard board;
-    
+    private Scene scene;
+    private FxBoard board;
+
     /**
-     * Start the Gui
+     * Will launch the game with the game and view created
      *
-     * @param primaryStage Main scene
+     * @param args
      */
-    public FxPentago(Stage primaryStage) {
-        this.stage = primaryStage;
-        
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
         board = new FxBoard();
-        primaryStage.setTitle("Pentago");
-        primaryStage.setResizable(false);
+        stage.setTitle("Pentago");
+        stage.setResizable(false);
         Pane root = new Pane();
+        //root.setCenter(board);
+        root.setPadding(new Insets(10, 10, 10, 10));
         root.getChildren().addAll(board.getBoard(), board.getText());
 
-        scene = new Scene(root);
+        scene = new Scene(root,600,600);
         stage.setScene(scene);
         stage.show();
     }

@@ -5,6 +5,22 @@ package G45502.Pentago.model;
  * @author G45502
  */
 public interface Facade{
+    
+    /**
+     * Getter of quadrant
+     *
+     * @param value Which quadrant to pick
+     * @return 2d array of the selected Quadrant
+     */
+    public Quadrant getQuadrant(int value);
+    
+    /**
+     * Set the color of the marble in the view when adding player to the list
+     *
+     * @return White of the list of player is empty, Black if at least 1 player
+     * is in the list of Players
+     */
+    public Marble setColor();
 
     /**
      * Will add a player to the list of all players

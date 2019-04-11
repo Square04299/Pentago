@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Board in with the players will player and add marbles
  * @author G45502
  */
 public class Board {
@@ -31,9 +31,8 @@ public class Board {
     public Quadrant getQuadrant(int value) {
         if (value < 0 || value > 3) {
             throw new UnavailablePlace("The Number you gave is out of bound from the list");
-        } else {
-            return this.board.get(value);
         }
+        return this.board.get(value);
     }
 
     void addPiece(int x, int y, Marble c, int q) {
