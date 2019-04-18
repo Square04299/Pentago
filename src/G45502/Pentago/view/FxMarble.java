@@ -1,5 +1,7 @@
 package G45502.Pentago.view;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
@@ -10,19 +12,12 @@ import javafx.scene.shape.StrokeType;
  */
 public class FxMarble extends Circle {
 
-    private Circle circle;
-
     /**
      * Builder of marble
      */
     public FxMarble() {
-        initialze();
-    }
-
-    private void initialze() {
-        circle = new Circle(30, Color.PINK);
+        super(30, Color.PINK);
         setStyle();
-
     }
 
     /**
@@ -31,7 +26,7 @@ public class FxMarble extends Circle {
      * @return Marble
      */
     public Circle getCircle() {
-        return circle;
+        return this;
     }
 
     /**
@@ -39,13 +34,24 @@ public class FxMarble extends Circle {
      *
      * @param color Black or White
      */
-    public void setColor(Color color) {
-        circle.setFill(color);
+    public void setColor(int color) {
+        switch (color) {
+            case 0:
+                this.setFill(Color.BLACK);
+                break;
+            case 1:
+                this.setFill(Color.WHITE);
+                break;
+            default:
+                this.setFill(Color.PINK);
+                break;
+        }
+        
     }
 
     private void setStyle() {
-        circle.setStroke(Color.BLACK);
-        circle.setStrokeWidth(3);
-        circle.setStrokeType(StrokeType.INSIDE);
+        this.setStroke(Color.BLACK);
+        this.setStrokeWidth(3);
+        this.setStrokeType(StrokeType.INSIDE);
     }
 }
