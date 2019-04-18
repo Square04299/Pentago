@@ -42,6 +42,10 @@ public class FxQuadrant extends GridPane {
     public GridPane getQuadrant() {
         return quadrant;
     }
+    
+    public void addMarble(Color color){
+        this.quadrant.getChildren().get(REMAINING);
+    }
 
     private void setStyle() {
         quadrant.setVgap(10);

@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/view/View.java</file>
-            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/test/G45502/Pentago/model/GameTest.java</file>
+            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/model/Marble.java</file>
+            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/view/FxBoard.java</file>
+            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/view/FxMarble.java</file>
+            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/view/FxQuadrant.java</file>
             <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/model/Facade.java</file>
-            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/model/Quadrant.java</file>
-            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/test/G45502/Pentago/model/FacadeTest.java</file>
             <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/model/Game.java</file>
-            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/main/Pentago.java</file>
-            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/controleur/Controleur.java</file>
+            <file>file:/Users/G45502/Google%20Drive/ESI/ESI%202eme/Q4/ATL/Pentago/src/G45502/Pentago/view/FxPentago.java</file>
         </group>
     </open-files>
 </project-private>

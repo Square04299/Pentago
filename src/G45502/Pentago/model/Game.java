@@ -4,12 +4,13 @@ import G45502.Pentago.exception.GameException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javafx.beans.InvalidationListener;
 
 /**
  * All methode that will help the controleur manage the game
  * @author G45502
  */
-public class Game implements Facade {
+public class Game implements Facade{
 
     private final Board board;
     private final List<Player> players;
@@ -206,5 +207,33 @@ public class Game implements Facade {
             return currentPlayer;
         }
         return null;
+    }
+
+    /**
+     * Return the value of the marble at the quadrant, position x and y
+     * @param i Quadrant
+     * @param j X axis
+     * @param k Y axis
+     * @return -1 if the color is null, 0 for black and 1 for white
+     */
+    @Override
+    public int getColorMarble(int i, int j, int k) {
+        Marble marble = this.board.getQuadrant(i).getPoint(j, k);
+        if (marble == Marble.WHITE) {
+            return marble.getValue();
+        }else if(marble == Marble.BLACK){
+            return marble.getValue();
+        }
+        return -1;
+    }
+
+    @Override
+    public void addListener(InvalidationListener il) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeListener(InvalidationListener il) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

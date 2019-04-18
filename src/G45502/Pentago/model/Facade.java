@@ -1,10 +1,12 @@
 package G45502.Pentago.model;
 
+import javafx.beans.Observable;
+
 /**
  *
  * @author G45502
  */
-public interface Facade{
+public interface Facade extends Observable{
     
     /**
      * Getter of quadrant
@@ -88,4 +90,13 @@ public interface Facade{
      * continue the logique of the game
      */
     Player getWinners();
+
+    /**
+     * Return the value of the marble at the quadrant, position x and y
+     * @param i Quadrant
+     * @param j X axis
+     * @param k Y axis
+     * @return -1 if the color is null, 0 for black and 1 for white
+     */
+    public int getColorMarble(int i, int j, int k);
 }
