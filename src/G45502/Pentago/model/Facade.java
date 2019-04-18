@@ -1,12 +1,13 @@
 package G45502.Pentago.model;
 
-import javafx.beans.Observable;
+import java.util.Observable;
+
 
 /**
  *
  * @author G45502
  */
-public interface Facade extends Observable{
+public abstract class Facade extends Observable {
     
     /**
      * Getter of quadrant
@@ -14,7 +15,7 @@ public interface Facade extends Observable{
      * @param value Which quadrant to pick
      * @return 2d array of the selected Quadrant
      */
-    public Quadrant getQuadrant(int value);
+    public abstract Quadrant getQuadrant(int value);
     
     /**
      * Set the color of the marble in the view when adding player to the list
@@ -22,27 +23,27 @@ public interface Facade extends Observable{
      * @return White of the list of player is empty, Black if at least 1 player
      * is in the list of Players
      */
-    public Marble setColor();
+    public abstract Marble setColor();
 
     /**
      * Will add a player to the list of all players
      *
      * @param player A player to add
      */
-    public void addPlayer(Player player);
+    public abstract void addPlayer(Player player);
 
     /**
      * Getter of the Current Player playing
      *
      * @return the player that is currently playing
      */
-    Player getCurrentPlayer();
+    public abstract Player getCurrentPlayer();
 
     /**
      * Change the current Player by knowing the color of it's marble if the
      * current player has a white marble, it will change it to black
      */
-    void changeCurrentPlayer();
+     public abstract void changeCurrentPlayer();
 
     /**
      * Place a white or black marble in a specific x, y and quadrant
@@ -51,35 +52,35 @@ public interface Facade extends Observable{
      * @param y the y axis
      * @param q the quadrant to add the marble
      */
-    public void placePiece(int x, int y, int q);
+    public abstract void placePiece(int x, int y, int q);
 
     /**
      * Will rotate the "value" quadrant to the right
      *
      * @param value Which quadrant to rotate
      */
-    void rotationQuadrantRight(int value);
+     abstract void rotationQuadrantRight(int value);
 
     /**
      * Will rotate the "value" quadrant to the left
      *
      * @param value Which quadrant to rotate
      */
-    void rotationQuadrantLeft(int value);
+     abstract void rotationQuadrantLeft(int value);
 
     /**
      * Check if the state of the game is STATE.OVER
      *
      * @return true if STATE.OVER
      */
-    boolean isOver();
+     public abstract boolean isOver();
 
     /**
      * Setter of the State
      *
      * @param state will change the state with this value
      */
-    void setState(State state);
+     abstract void setState(State state);
 
     /**
      * Get the winner by looking if a marble has been placed in the x=0, y=0 and
@@ -89,7 +90,7 @@ public interface Facade extends Observable{
      * condition are right he will be selected otherwise it will just ignore and
      * continue the logique of the game
      */
-    Player getWinners();
+    public abstract Player getWinners();
 
     /**
      * Return the value of the marble at the quadrant, position x and y
@@ -98,5 +99,5 @@ public interface Facade extends Observable{
      * @param k Y axis
      * @return -1 if the color is null, 0 for black and 1 for white
      */
-    public int getColorMarble(int i, int j, int k);
+    public abstract int getColorMarble(int i, int j, int k);
 }

@@ -4,13 +4,12 @@ import G45502.Pentago.exception.GameException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javafx.beans.InvalidationListener;
 
 /**
  * All methode that will help the controleur manage the game
  * @author G45502
  */
-public class Game implements Facade{
+public class Game extends Facade{
 
     private final Board board;
     private final List<Player> players;
@@ -138,6 +137,8 @@ public class Game implements Facade{
         }
         board.addPiece(x, y, this.currentPlayer.getColor(), q);
         this.setState(State.ROTATE);
+        notifyObservers();
+        setChanged();
     }
 
     /**
@@ -151,6 +152,8 @@ public class Game implements Facade{
             this.board.getQuadrant(value).rotateRight();
             this.setState(State.PLACE);
         }
+        notifyObservers();
+        setChanged();
     }
 
     /**
@@ -164,6 +167,8 @@ public class Game implements Facade{
             this.board.getQuadrant(value).rotateLeft();
             this.setState(State.PLACE);
         }
+        notifyObservers();
+        setChanged();
     }
 
     /**
@@ -225,15 +230,5 @@ public class Game implements Facade{
             return marble.getValue();
         }
         return -1;
-    }
-
-    @Override
-    public void addListener(InvalidationListener il) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void removeListener(InvalidationListener il) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
