@@ -1,9 +1,13 @@
 package G45502.Pentago.view;
 
+import G45502.Pentago.model.Facade;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -14,15 +18,19 @@ import javafx.scene.layout.RowConstraints;
  * @author G45502
  */
 public class FxQuadrant extends GridPane {
-    
+
     private final int MAX_SIZE;
+    private final int numberQuadrant;
+    private Facade model;
 
     /**
      * Builder of Quadrant
      */
-    public FxQuadrant() {
+    public FxQuadrant(Facade model, int id) {
         super();
         this.MAX_SIZE = 3;
+        this.model = model;
+        this.numberQuadrant = id;
         initialze();
     }
 
@@ -30,31 +38,42 @@ public class FxQuadrant extends GridPane {
         setStyle();
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
-                this.add(new FxMarble(), j, i);
+                FxMarble marble = new FxMarble(j,i);
+                this.add(marble, j, i);
+                marble.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<Event>() {
+                    @Override
+                    public void handle(Event event) {
+                        System.out.println("Change Marble Color");
+                        FxMarble marbleClicked = (FxMarble) event.getSource();
+                        System.out.println("x " +marbleClicked.getX());
+                        System.out.println("y " +marbleClicked.getY());
+                        System.out.println("Q " +((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
+                        //model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
+                    }
+                });
             }
         }
     }
 
-    /**
-     * Getter of quadrant
-     *
-     * @return
-     */
-    public GridPane getQuadrant() {
-        return this;
+    public int getNumberQuadrant() {
+        return numberQuadrant;
     }
-    
-    public FxMarble getCircle(int x, int y){
+
+    public Facade getModel() {
+        return model;
+    }
+
+    public FxMarble getCircle(int x, int y) {
         ObservableList<Node> node = this.getChildren();
         for (Node child : node) {
             if (this.getRowIndex(child) == x && this.getColumnIndex(child) == y) {
-                return (FxMarble)child;
+                return (FxMarble) child;
             }
         }
         return null;
     }
-    
-    public void addMarble(Color color){
+
+    public void addMarble(Color color) {
         this.getChildren().get(REMAINING);
     }
 
@@ -69,13 +88,13 @@ public class FxQuadrant extends GridPane {
             col.setMinWidth(10);
             col.setPrefWidth(100);
             col.setHalignment(HPos.CENTER);
-            
+
             RowConstraints row = new RowConstraints();
             row.setVgrow(Priority.SOMETIMES);
             row.setMinHeight(10);
             row.setPrefHeight(30);
             row.setValignment(VPos.CENTER);
-            
+
             this.getRowConstraints().add(row);
             this.getColumnConstraints().add(col);
         }

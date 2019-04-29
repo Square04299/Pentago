@@ -23,9 +23,5 @@ public class FxControleur {
     public void startGame(){
         game.addPlayer(new Player("Pass", Marble.WHITE));
         game.addPlayer(new Player("Chris", Marble.BLACK));
-        while (!game.isOver()) {            
-            game.placePiece(0, 0, 1);
-            game.changeCurrentPlayer();
-        }
     }
 }

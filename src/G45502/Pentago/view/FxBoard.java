@@ -2,9 +2,8 @@ package G45502.Pentago.view;
 
 import G45502.Pentago.model.Facade;
 import G45502.Pentago.model.Player;
-import java.util.Observable;
-import java.util.Observer;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -21,14 +20,17 @@ public class FxBoard extends GridPane{
     private Text text;
     private final int MAX_SIZE_Quadrant;
     private final int MAX_SIZE_Marble;
+    private Facade model;
 
     /**
      * Builder of board
+     * @param model Game
      */
-    public FxBoard() {
+    public FxBoard(Facade model) {
         super();
         this.MAX_SIZE_Quadrant = 2;
         this.MAX_SIZE_Marble = 3;
+        this.model = model;
         initialze();
     }
 
@@ -36,7 +38,7 @@ public class FxBoard extends GridPane{
         setStyle();
         for (int i = 0; i < MAX_SIZE_Quadrant; i++) {
             for (int j = 0; j < MAX_SIZE_Quadrant; j++) {
-                this.add(new FxQuadrant().getQuadrant(), j, i);
+                this.add(new FxQuadrant(model,j+i+i), j, i);
             }
         }
         text = new Text(0, 620, "Player that is playing : ");
@@ -59,6 +61,7 @@ public class FxBoard extends GridPane{
         this.setVgap(10);
         this.setHgap(10);
         this.setPrefSize(600, 600);
+        this.setPadding(new Insets(10, 10, 10, 10));
         this.setStyle("-fx-background-color:#000000;");
         for (int i = 0; i < MAX_SIZE_Quadrant; i++) {
             ColumnConstraints col = new ColumnConstraints();
@@ -101,4 +104,11 @@ public class FxBoard extends GridPane{
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "FxBoard{" + "text=" + text + ", MAX_SIZE_Quadrant=" + MAX_SIZE_Quadrant + ", MAX_SIZE_Marble=" + MAX_SIZE_Marble + ", model=" + model + '}';
+    }
+    
+    
 }

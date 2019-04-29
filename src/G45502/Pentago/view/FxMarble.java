@@ -9,12 +9,19 @@ import javafx.scene.shape.StrokeType;
  * @author G45502
  */
 public class FxMarble extends Circle {
+    
+    private int x;
+    private int y;
 
     /**
      * Builder of marble
+     * @param x X axis
+     * @param y Y axis
      */
-    public FxMarble() {
+    public FxMarble(int x,int y) {
         super(30, Color.PINK);
+        this.x = x;
+        this.y = y;
         setStyle();
     }
 
@@ -26,6 +33,24 @@ public class FxMarble extends Circle {
     public Circle getCircle() {
         return this;
     }
+
+    /**
+     * Getter x
+     * @return the x position of the marble
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Getter Y
+     * @return the y position of the marble
+     */
+    public int getY() {
+        return y;
+    }
+    
+    
 
     /**
      * Change the color of a marble
@@ -52,4 +77,11 @@ public class FxMarble extends Circle {
         this.setStrokeWidth(3);
         this.setStrokeType(StrokeType.INSIDE);
     }
+
+    @Override
+    public String toString() {
+        return "FxMarble{" + "x=" + x + ", y=" + y + '}';
+    }
+    
+    
 }
