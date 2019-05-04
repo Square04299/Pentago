@@ -25,6 +25,8 @@ public class FxQuadrant extends GridPane {
 
     /**
      * Builder of Quadrant
+     * @param model Model of the game
+     * @param id id of the quadrant
      */
     public FxQuadrant(Facade model, int id) {
         super();
@@ -43,12 +45,11 @@ public class FxQuadrant extends GridPane {
                 marble.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<Event>() {
                     @Override
                     public void handle(Event event) {
-                        System.out.println("Change Marble Color");
                         FxMarble marbleClicked = (FxMarble) event.getSource();
-                        System.out.println("x " +marbleClicked.getX());
-                        System.out.println("y " +marbleClicked.getY());
-                        System.out.println("Q " +((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
-                        //model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
+//                        System.out.println("x " +marbleClicked.getX());
+//                        System.out.println("y " +marbleClicked.getY());
+//                        System.out.println("Q " +((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
+                        model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
                     }
                 });
             }

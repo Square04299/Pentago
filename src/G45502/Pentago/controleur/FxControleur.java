@@ -11,17 +11,17 @@ import G45502.Pentago.view.FxPentago;
  */
 public class FxControleur {
 
-    private final Facade game;
+    private final Facade model;
     private final FxPentago fxView;
 
-    public FxControleur(Facade game, FxPentago fxView) {
-        this.game = game;
+    public FxControleur(Facade model, FxPentago fxView) {
+        this.model = model;
         this.fxView = fxView;
-        game.addObserver(fxView);
+        model.addObserver(fxView);
     }
 
     public void startGame(){
-        game.addPlayer(new Player("Pass", Marble.WHITE));
-        game.addPlayer(new Player("Chris", Marble.BLACK));
+        model.addPlayer(new Player("Player 1", Marble.WHITE));
+        model.addPlayer(new Player("Player 2", Marble.BLACK));
     }
 }

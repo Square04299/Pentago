@@ -3,7 +3,6 @@ package G45502.Pentago.view;
 import G45502.Pentago.model.Facade;
 import java.util.Observable;
 import java.util.Observer;
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
@@ -13,27 +12,22 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class FxPentago extends Application implements Observer {
+public class FxPentago implements Observer {
 
     private Scene scene;
     private FxBoard board;
     private Facade model;
 
-    /**
-     * Will launch the game with the game and view created
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        launch(args);
+    public FxPentago(Facade model, Stage stage) {
+        this.model = model;
+        start(stage);
     }
+    
 
-    @Override
     public void start(Stage stage) {
         board = new FxBoard(model);
         stage.setTitle("Pentago");
         //stage.setResizable(false);
-        //new
         SplitPane root = new SplitPane();
         root.setDividerPositions(0.3);
         AnchorPane rightPane = new AnchorPane();
@@ -56,6 +50,8 @@ public class FxPentago extends Application implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         model = (Facade) o;
+        System.out.println("Update FxView");
+        System.out.println(arg);
         board.updateBoard(model);
     }
 }

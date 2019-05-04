@@ -17,7 +17,6 @@ import javafx.scene.text.Text;
  */
 public class FxBoard extends GridPane{
 
-    private Text text;
     private final int MAX_SIZE_Quadrant;
     private final int MAX_SIZE_Marble;
     private Facade model;
@@ -41,20 +40,6 @@ public class FxBoard extends GridPane{
                 this.add(new FxQuadrant(model,j+i+i), j, i);
             }
         }
-        text = new Text(0, 620, "Player that is playing : ");
-    }
-
-    /**
-     * Getter of Board
-     *
-     * @return board
-     */
-    public Text getText() {
-        return text;
-    }
-
-    void setText(Player currentPlayer) {
-        this.text.setText("Player that is playing : " + currentPlayer.getName());
     }
 
     private void setStyle() {
@@ -88,8 +73,8 @@ public class FxBoard extends GridPane{
             for (int j = 0; j < MAX_SIZE_Quadrant; j++) {
                 for (int k = 0; k < MAX_SIZE_Marble; k++) {
                     for (int l = 0; l < MAX_SIZE_Marble; l++) {
-                        int color = game.getColorMarble(i+j, k, l);
-                        this.changeColor(i, j, k, l, color);
+                        int color = game.getColorMarble(j+i+i, k, l);
+                        this.changeColor(i, j, l, k, color);
                     }
                 }
             }
@@ -104,11 +89,4 @@ public class FxBoard extends GridPane{
             }
         }
     }
-
-    @Override
-    public String toString() {
-        return "FxBoard{" + "text=" + text + ", MAX_SIZE_Quadrant=" + MAX_SIZE_Quadrant + ", MAX_SIZE_Marble=" + MAX_SIZE_Marble + ", model=" + model + '}';
-    }
-    
-    
 }

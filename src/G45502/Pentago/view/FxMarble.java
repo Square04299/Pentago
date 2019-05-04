@@ -76,12 +76,5 @@ public class FxMarble extends Circle {
         this.setStroke(Color.BLACK);
         this.setStrokeWidth(3);
         this.setStrokeType(StrokeType.INSIDE);
-    }
-
-    @Override
-    public String toString() {
-        return "FxMarble{" + "x=" + x + ", y=" + y + '}';
-    }
-    
-    
+    } 
 }

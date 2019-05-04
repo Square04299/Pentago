@@ -42,6 +42,7 @@ public class Game extends Facade{
      * @param value Which quadrant to pick
      * @return 2d array of the selected Quadrant
      */
+    @Override
     public Quadrant getQuadrant(int value) {
         return board.getQuadrant(value);//.getQuadrant();
     }
@@ -136,9 +137,9 @@ public class Game extends Facade{
             throw new GameException("You are in the wrong State");
         }
         board.addPiece(x, y, this.currentPlayer.getColor(), q);
-        this.setState(State.ROTATE);
-        notifyObservers();
+        //this.setState(State.ROTATE);
         setChanged();
+        notifyObservers("A marble has been added to the board");
     }
 
     /**
@@ -152,8 +153,8 @@ public class Game extends Facade{
             this.board.getQuadrant(value).rotateRight();
             this.setState(State.PLACE);
         }
-        notifyObservers();
         setChanged();
+        notifyObservers("One of the quadrant has rotated to the right");
     }
 
     /**
@@ -167,8 +168,8 @@ public class Game extends Facade{
             this.board.getQuadrant(value).rotateLeft();
             this.setState(State.PLACE);
         }
-        notifyObservers();
         setChanged();
+        notifyObservers("One of the quadrant has rotated to the left");
     }
 
     /**
