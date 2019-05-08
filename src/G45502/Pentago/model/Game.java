@@ -137,7 +137,7 @@ public class Game extends Facade{
             throw new GameException("You are in the wrong State");
         }
         board.addPiece(x, y, this.currentPlayer.getColor(), q);
-        //this.setState(State.ROTATE);
+        this.setState(State.ROTATE);
         setChanged();
         notifyObservers("A marble has been added to the board");
     }

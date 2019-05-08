@@ -17,6 +17,7 @@ public class FxPentago implements Observer {
     private Scene scene;
     private FxBoard board;
     private Facade model;
+    private FxInfo info;
 
     public FxPentago(Facade model, Stage stage) {
         this.model = model;
@@ -26,6 +27,7 @@ public class FxPentago implements Observer {
 
     public void start(Stage stage) {
         board = new FxBoard(model);
+        //info = new FxInfo(model);
         stage.setTitle("Pentago");
         //stage.setResizable(false);
         SplitPane root = new SplitPane();
@@ -39,7 +41,7 @@ public class FxPentago implements Observer {
         rightPane.prefWidth(100);
 
         root.getItems().addAll(leftPane, rightPane);
-        //leftPane.getChildren().addAll(); TO-DO
+        //leftPane.getChildren().add(info);
         rightPane.getChildren().add(board);
 
         scene = new Scene(root, 830, 600);

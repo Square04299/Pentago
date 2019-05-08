@@ -26,11 +26,8 @@ public class Pentago extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Facade game = new Game();
-        //View view = new View(game);
         FxPentago fxView = new FxPentago(game,stage);
-        //Controleur controleur = new Controleur(game, view);
         FxControleur fxcontroleur = new FxControleur(game, fxView);
-        //controleur.startGame();
         fxcontroleur.startGame();
     }
 }
