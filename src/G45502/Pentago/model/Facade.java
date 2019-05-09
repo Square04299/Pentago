@@ -59,14 +59,14 @@ public abstract class Facade extends Observable {
      *
      * @param value Which quadrant to rotate
      */
-     abstract void rotationQuadrantRight(int value);
+    public abstract void rotationQuadrantRight(int value);
 
     /**
      * Will rotate the "value" quadrant to the left
      *
      * @param value Which quadrant to rotate
      */
-     abstract void rotationQuadrantLeft(int value);
+    public abstract void rotationQuadrantLeft(int value);
 
     /**
      * Check if the state of the game is STATE.OVER

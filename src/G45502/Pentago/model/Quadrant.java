@@ -53,19 +53,19 @@ public class Quadrant {
         this.quadrant[x][y] = color;
     }
 
-    void rotateLeft() {
-        for (int j = 0; j < 2; j++) {
+    void rotateRight() {
+        for (int j = 0; j < MAX_SIZE-1; j++) {
             Marble temp = this.quadrant[0][j]; //Save [0][0]
             this.quadrant[0][j] = this.quadrant[j][MAX_SIZE - 1]; //Move [0][2] to [0][0]
-            this.quadrant[j][MAX_SIZE - 1] = this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j];
-            this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j] = this.quadrant[MAX_SIZE - 1 - j][0];
-            this.quadrant[MAX_SIZE - 1 - j][0] = temp;
+            this.quadrant[j][MAX_SIZE - 1] = this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j]; //Move [2][2] to [0][2]
+            this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j] = this.quadrant[MAX_SIZE - 1 - j][0]; //Move [2][0] to [2][2]
+            this.quadrant[MAX_SIZE - 1 - j][0] = temp; //Move [0][0] to [2][0]
         }
     }
 
-    void rotateRight() {
+    void rotateLeft() {
         for (int i = 0; i < 3; i++) {
-            this.rotateLeft();
+            this.rotateRight();
         }
     }
 

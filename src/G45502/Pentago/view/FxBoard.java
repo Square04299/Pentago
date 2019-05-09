@@ -1,7 +1,6 @@
 package G45502.Pentago.view;
 
 import G45502.Pentago.model.Facade;
-import G45502.Pentago.model.Player;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -9,7 +8,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.Text;
 
 /**
  *

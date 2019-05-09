@@ -23,5 +23,6 @@ public class FxControleur {
     public void startGame(){
         model.addPlayer(new Player("Player 1", Marble.WHITE));
         model.addPlayer(new Player("Player 2", Marble.BLACK));
+        fxView.setPlayer();
     }
 }

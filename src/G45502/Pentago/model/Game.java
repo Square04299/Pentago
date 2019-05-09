@@ -153,6 +153,7 @@ public class Game extends Facade{
             this.board.getQuadrant(value).rotateRight();
             this.setState(State.PLACE);
         }
+        changeCurrentPlayer();
         setChanged();
         notifyObservers("One of the quadrant has rotated to the right");
     }
@@ -168,6 +169,7 @@ public class Game extends Facade{
             this.board.getQuadrant(value).rotateLeft();
             this.setState(State.PLACE);
         }
+        changeCurrentPlayer();
         setChanged();
         notifyObservers("One of the quadrant has rotated to the left");
     }
