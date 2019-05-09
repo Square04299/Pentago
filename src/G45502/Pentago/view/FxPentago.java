@@ -1,5 +1,6 @@
 package G45502.Pentago.view;
 
+import G45502.Pentago.alert.Win;
 import G45502.Pentago.model.Facade;
 import java.util.Observable;
 import java.util.Observer;
@@ -64,6 +65,11 @@ public final class FxPentago implements Observer {
         model = (Facade) o;
         System.out.println("Update FxView");
         System.out.println(arg);
+        if (model.isOver()) {
+            board.updateBoard(model);
+            Win win = new Win(model);
+            win.showAndWait();
+        }
         board.updateBoard(model);
     }
 }

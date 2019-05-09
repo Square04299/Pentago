@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * All methode that will help the controleur manage the game
+ * All method that will help the controleur manage the game
  *
  * @author G45502
  */
@@ -163,6 +163,7 @@ public class Game extends Facade {
         }
         this.board.getQuadrant(value).rotateRight();
         this.setState(State.PLACE);
+        isOver();
         changeCurrentPlayer();
         setChanged();
         notifyObservers("One of the quadrant has rotated to the right");
@@ -181,6 +182,7 @@ public class Game extends Facade {
         }
         this.board.getQuadrant(value).rotateLeft();
         this.setState(State.PLACE);
+        isOver();
         changeCurrentPlayer();
         setChanged();
         notifyObservers("One of the quadrant has rotated to the left");
@@ -217,14 +219,18 @@ public class Game extends Facade {
      *
      * @return the currentPlayer, meaning the player that just played if the
      * condition are right he will be selected otherwise it will just ignore and
-     * continue the logique of the game
+     * continue the logic of the game
      */
     @Override
     public Player getWinners() {
         if (isOver()
                 || (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK
                 || board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE)) {
-            return currentPlayer;
+            if (board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE) {
+                return players.get(0);
+            }else if (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK) {
+                return players.get(1);
+            }
         }
         return null;
     }
