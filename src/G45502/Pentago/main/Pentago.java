@@ -1,11 +1,9 @@
 package G45502.Pentago.main;
 
-import G45502.Pentago.controleur.Controleur;
 import G45502.Pentago.controleur.FxControleur;
 import G45502.Pentago.model.Facade;
 import G45502.Pentago.model.Game;
 import G45502.Pentago.view.FxPentago;
-import G45502.Pentago.view.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -23,6 +21,11 @@ public class Pentago extends Application {
         launch(args);
     }
 
+    /**
+     * Start the stage and add the game to the stage.
+     * @param stage Stage where the scene will be added to.
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Facade game = new Game();

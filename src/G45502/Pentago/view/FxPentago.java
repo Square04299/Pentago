@@ -12,13 +12,18 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class FxPentago implements Observer {
+public final class FxPentago implements Observer {
 
     private Scene scene;
     private FxBoard board;
     private Facade model;
     private FxInfo info;
 
+    /**
+     * Builder thats will start the stage and will add the model to it
+     * @param model
+     * @param stage 
+     */
     public FxPentago(Facade model, Stage stage) {
         this.model = model;
         start(stage);

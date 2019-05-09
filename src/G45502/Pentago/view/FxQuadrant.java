@@ -42,15 +42,12 @@ public class FxQuadrant extends GridPane {
             for (int j = 0; j < MAX_SIZE; j++) {
                 FxMarble marble = new FxMarble(j,i);
                 this.add(marble, j, i);
-                marble.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<Event>() {
-                    @Override
-                    public void handle(Event event) {
-                        FxMarble marbleClicked = (FxMarble) event.getSource();
+                marble.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+                    FxMarble marbleClicked = (FxMarble) event.getSource();
 //                        System.out.println("x " +marbleClicked.getX());
 //                        System.out.println("y " +marbleClicked.getY());
 //                        System.out.println("Q " +((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
-                        model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
-                    }
+model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
                 });
             }
         }
@@ -67,7 +64,7 @@ public class FxQuadrant extends GridPane {
     public FxMarble getCircle(int x, int y) {
         ObservableList<Node> node = this.getChildren();
         for (Node child : node) {
-            if (this.getRowIndex(child) == x && this.getColumnIndex(child) == y) {
+            if (FxQuadrant.getRowIndex(child) == x && FxQuadrant.getColumnIndex(child) == y) {
                 return (FxMarble) child;
             }
         }

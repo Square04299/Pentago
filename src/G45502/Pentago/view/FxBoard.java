@@ -82,7 +82,7 @@ public class FxBoard extends GridPane{
     private void changeColor(int quadrantX, int quadrantY, int x, int y, int color) {
         ObservableList<Node> node = this.getChildren();
         for (Node child : node) {
-            if (this.getRowIndex(child) == quadrantX && this.getColumnIndex(child) == quadrantY) {
+            if (FxBoard.getRowIndex(child) == quadrantX && FxBoard.getColumnIndex(child) == quadrantY) {
                 ((FxQuadrant) child).getCircle(x, y).setColor(color);
             }
         }

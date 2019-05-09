@@ -50,23 +50,17 @@ public class FxInfo extends VBox implements Observer {
         left = new Button("Turn Left");
         right = new Button("Turn Right");
         
-        left.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent t) {
-                RadioButton selected = (RadioButton) group.getSelectedToggle();
-                int num = Integer.parseInt(selected.getText()) - 1;
-                model.rotationQuadrantLeft(num);
-                group.selectToggle(null);
-            }
+        left.setOnAction((ActionEvent t) -> {
+            RadioButton selected = (RadioButton) group.getSelectedToggle();
+            int num = Integer.parseInt(selected.getText()) - 1;
+            model.rotationQuadrantLeft(num);
+            group.selectToggle(null);
         });
-        right.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent t) {
-                RadioButton selected = (RadioButton) group.getSelectedToggle();
-                int num = Integer.parseInt(selected.getText()) - 1;
-                model.rotationQuadrantRight(num);
-                group.selectToggle(null);
-            }
+        right.setOnAction((ActionEvent t) -> {
+            RadioButton selected = (RadioButton) group.getSelectedToggle();
+            int num = Integer.parseInt(selected.getText()) - 1;
+            model.rotationQuadrantRight(num);
+            group.selectToggle(null);
         });
         
         this.getChildren().addAll(text,tPlayerName,text1,tMarbleColor,one,two,three,four,left,right);
