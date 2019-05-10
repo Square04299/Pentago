@@ -1,5 +1,6 @@
 package G45502.Pentago.model;
 
+import G45502.Pentago.alert.EndGame;
 import G45502.Pentago.alert.WrongStateAddMarble;
 import G45502.Pentago.alert.WrongStateRotate;
 import G45502.Pentago.exception.GameException;
@@ -20,6 +21,7 @@ public class Game extends Facade {
     private State gameState;
     private final WrongStateAddMarble wrongStateMarble;
     private final WrongStateRotate wrongStateRotate;
+    private final EndGame endGame;
 
     /**
      * Builder of Game Creates a Board, Array of players, GameState and the
@@ -32,6 +34,7 @@ public class Game extends Facade {
         this.currentPlayer = null;
         this.wrongStateMarble = new WrongStateAddMarble();
         this.wrongStateRotate = new WrongStateRotate();
+        this.endGame = new EndGame();
     }
 
     /**
@@ -140,14 +143,17 @@ public class Game extends Facade {
      */
     @Override
     public void placePiece(int x, int y, int q) {
-        if (gameState != State.PLACE) {
+        if (gameState == State.OVER) {
+            endGame.showAndWait();
+        }else if (gameState == State.ROTATE) {
             wrongStateMarble.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
-        }
-        board.addPiece(x, y, this.currentPlayer.getColor(), q);
+        }else{
+            board.addPiece(x, y, this.currentPlayer.getColor(), q);
         this.setState(State.ROTATE);
         setChanged();
         notifyObservers("A marble has been added to the board");
+        }
     }
 
     /**
@@ -157,16 +163,19 @@ public class Game extends Facade {
      */
     @Override
     public void rotationQuadrantRight(int value) {
-        if (gameState != State.ROTATE) {
+        if (gameState == State.OVER) {
+            endGame.showAndWait();
+        } else if (gameState == State.PLACE) {
             wrongStateRotate.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
+        } else {
+            this.board.getQuadrant(value).rotateRight();
+            this.setState(State.PLACE);
+            isOver();
+            changeCurrentPlayer();
+            setChanged();
+            notifyObservers("One of the quadrant has rotated to the left");
         }
-        this.board.getQuadrant(value).rotateRight();
-        this.setState(State.PLACE);
-        isOver();
-        changeCurrentPlayer();
-        setChanged();
-        notifyObservers("One of the quadrant has rotated to the right");
     }
 
     /**
@@ -176,16 +185,19 @@ public class Game extends Facade {
      */
     @Override
     public void rotationQuadrantLeft(int value) {
-        if (gameState != State.ROTATE) {
+        if (gameState == State.OVER) {
+            endGame.showAndWait();
+        } else if (gameState == State.PLACE) {
             wrongStateRotate.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
+        } else {
+            this.board.getQuadrant(value).rotateLeft();
+            this.setState(State.PLACE);
+            isOver();
+            changeCurrentPlayer();
+            setChanged();
+            notifyObservers("One of the quadrant has rotated to the left");
         }
-        this.board.getQuadrant(value).rotateLeft();
-        this.setState(State.PLACE);
-        isOver();
-        changeCurrentPlayer();
-        setChanged();
-        notifyObservers("One of the quadrant has rotated to the left");
     }
 
     /**
@@ -228,7 +240,7 @@ public class Game extends Facade {
                 || board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE)) {
             if (board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE) {
                 return players.get(0);
-            }else if (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK) {
+            } else if (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK) {
                 return players.get(1);
             }
         }
