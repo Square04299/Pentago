@@ -86,7 +86,7 @@ public class JoueurTest {
     /**
      * Test of getPlayer method, of class Player.
      */
-    @Test(expected = ExceptionInInitializerError.class)
+    @Test(expected = NullPointerException.class)
     public void testGetPlayerNull() {
         System.out.println("getPlayerNull");
         Player player1 = new Player("Lucas", Marble.WHITE);

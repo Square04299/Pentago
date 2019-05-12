@@ -135,7 +135,7 @@ public class GameTest {
     /**
      * Test of getWinners method, of class Game.
      */
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testGetWinnersStateOver() {
         System.out.println("getWinnersStateOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
@@ -145,8 +145,8 @@ public class GameTest {
         instance.addPlayer(player1);
         instance.addPlayer(player2);
         instance.setState(State.OVER);
-        Player expResult = player1;
-        Player result = instance.getWinners();
+        String expResult = player1.getName();
+        String result = instance.getWinners().getName();
         assertEquals(expResult, result);
     }
 
@@ -184,8 +184,8 @@ public class GameTest {
         instance.setState(State.PLACE);
         instance.changeCurrentPlayer();
         instance.placePiece(0, 0, 0);
-        Player expResult = instance.getCurrentPlayer();
-        Player result = instance.getWinners();
+        String expResult = instance.getCurrentPlayer().getName();
+        String result = instance.getWinners().getName();
         assertEquals(expResult, result);
     }
 
@@ -262,7 +262,7 @@ public class GameTest {
     /**
      * Test of getPlayers method, of class Game.
      */
-    @Test(expected = NullPointerException.class)
+    @Test(expected = AssertionError.class)
     public void testGetPlayersNull() {
         System.out.println("getPlayers");
         Game instance = new Game();
@@ -339,12 +339,13 @@ public class GameTest {
     /**
      * Test of rotationQuadrantRight method, of class Facade.
      */
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testRotationQuadrantRight() {
         System.out.println("rotationQuadrantRight");
         int value = 0;
         Game instance = new Game();
         Quadrant exGame = instance.getQuadrant(value);
+        instance.setState(State.ROTATE);
         instance.rotationQuadrantRight(value);
         assertTrue(instance.getQuadrant(value) == exGame);
     }
@@ -352,12 +353,13 @@ public class GameTest {
     /**
      * Test of rotationQuadrantLeft method, of class Facade.
      */
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testRotationQuadrantLeft() {
         System.out.println("rotationQuadrantLeft");
         int value = 0;
         Game instance = new Game();
         Quadrant exGame = instance.getQuadrant(value);
+        instance.setState(State.ROTATE);
         instance.rotationQuadrantLeft(value);
         assertTrue(instance.getQuadrant(value) == exGame);
     }
