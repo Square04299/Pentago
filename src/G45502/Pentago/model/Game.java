@@ -4,6 +4,7 @@ import G45502.Pentago.alert.EndGame;
 import G45502.Pentago.alert.WrongStateAddMarble;
 import G45502.Pentago.alert.WrongStateRotate;
 import G45502.Pentago.exception.GameException;
+import G45502.Pentago.exception.UnavailablePlace;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -145,14 +146,15 @@ public class Game extends Facade {
     public void placePiece(int x, int y, int q) {
         if (gameState == State.OVER) {
             endGame.showAndWait();
-        }else if (gameState == State.ROTATE) {
+        } else if (gameState == State.ROTATE) {
             wrongStateMarble.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
-        }else{
+        } else {
             board.addPiece(x, y, this.currentPlayer.getColor(), q);
-        this.setState(State.ROTATE);
-        setChanged();
-        notifyObservers("A marble has been added to the board");
+
+            this.setState(State.ROTATE);
+            setChanged();
+            notifyObservers("A marble has been added to the board");
         }
     }
 
