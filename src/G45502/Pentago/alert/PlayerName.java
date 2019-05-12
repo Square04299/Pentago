@@ -10,9 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.util.Pair;
 
 /**
@@ -52,9 +52,9 @@ public class PlayerName {
         TextField player2 = new TextField();
         player2.setPromptText("Player 2");
 
-        grid.add(new Label("Player 1 : "), 0, 0);
+        grid.add(new Text("Player 1 : "), 0, 0);
         grid.add(player1, 1, 0);
-        grid.add(new Label("Player 2 : "), 0, 1);
+        grid.add(new Text("Player 2 : "), 0, 1);
         grid.add(player2, 1, 1);
 
 // Enable/Disable Start Game button depending on whether a player1 was entered.

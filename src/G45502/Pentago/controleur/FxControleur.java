@@ -2,8 +2,6 @@ package G45502.Pentago.controleur;
 
 import G45502.Pentago.alert.PlayerName;
 import G45502.Pentago.model.Facade;
-import G45502.Pentago.model.Marble;
-import G45502.Pentago.model.Player;
 import G45502.Pentago.view.FxPentago;
 
 /**
@@ -18,6 +16,7 @@ public class FxControleur {
 
     /**
      * Builder of the View and the game.
+     *
      * @param model logic of the game with the rules.
      * @param fxView Graphical view.
      */
@@ -28,10 +27,10 @@ public class FxControleur {
     }
 
     /**
-     * Will start the view part of the game,
-     * while adding 2 player to the pool of player.
+     * Will start the view part of the game, while adding 2 player to the pool
+     * of player.
      */
-    public void startGame(){
+    public void startGame() {
         this.playerName = new PlayerName(model);
         fxView.setPlayer();
     }

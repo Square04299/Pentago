@@ -4,7 +4,6 @@ import G45502.Pentago.alert.EndGame;
 import G45502.Pentago.alert.WrongStateAddMarble;
 import G45502.Pentago.alert.WrongStateRotate;
 import G45502.Pentago.exception.GameException;
-import G45502.Pentago.exception.UnavailablePlace;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

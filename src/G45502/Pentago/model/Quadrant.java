@@ -4,6 +4,7 @@ import G45502.Pentago.exception.UnavailablePlace;
 
 /**
  * One of the 4 square of the board
+ *
  * @author G45502
  */
 public class Quadrant {
@@ -54,7 +55,7 @@ public class Quadrant {
     }
 
     void rotateRight() {
-        for (int j = 0; j < MAX_SIZE-1; j++) {
+        for (int j = 0; j < MAX_SIZE - 1; j++) {
             Marble temp = this.quadrant[0][j]; //Save [0][0]
             this.quadrant[0][j] = this.quadrant[j][MAX_SIZE - 1]; //Move [0][2] to [0][0]
             this.quadrant[j][MAX_SIZE - 1] = this.quadrant[MAX_SIZE - 1][MAX_SIZE - 1 - j]; //Move [2][2] to [0][2]

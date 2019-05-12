@@ -26,7 +26,6 @@ public class FxInfo extends VBox implements Observer {
     private RadioButton one, two, three, four;
     private Button left, right, help, quit;
     private Help helpAlert;
-    
 
     public FxInfo(Facade model) {
         super(10);
@@ -44,20 +43,19 @@ public class FxInfo extends VBox implements Observer {
         two = new RadioButton("2");
         three = new RadioButton("3");
         four = new RadioButton("4");
-        
+
         one.setToggleGroup(group);
         two.setToggleGroup(group);
         three.setToggleGroup(group);
         four.setToggleGroup(group);
         group.selectToggle(one);
-        
+
         left = new Button("Turn Left");
         right = new Button("Turn Right");
         help = new Button("Help");
         helpAlert = new Help();
         quit = new Button("Quit");
-        
-        
+
         left.setOnAction((ActionEvent t) -> {
             RadioButton selected = (RadioButton) group.getSelectedToggle();
             int num = Integer.parseInt(selected.getText()) - 1;
@@ -68,22 +66,22 @@ public class FxInfo extends VBox implements Observer {
             int num = Integer.parseInt(selected.getText()) - 1;
             model.rotationQuadrantRight(num);
         });
-        
+
         help.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
                 helpAlert.showAndWait();
             }
         });
-        
+
         quit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
                 Platform.exit();
             }
         });
-        
-        this.getChildren().addAll(text,tPlayerName,text1,tMarbleColor,one,two,three,four,left,right,help,quit);
+
+        this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, one, two, three, four, left, right, help, quit);
     }
 
     @Override
@@ -98,8 +96,8 @@ public class FxInfo extends VBox implements Observer {
         this.currentPlayerName = model.getCurrentPlayer().getName();
         this.marbleColor = model.getCurrentPlayer().getColor().toString();
     }
-    
-    void playerData(){
+
+    void playerData() {
         tPlayerName.setText(currentPlayerName);
         tMarbleColor.setText(marbleColor);
     }

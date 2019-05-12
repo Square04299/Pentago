@@ -22,14 +22,14 @@ public final class FxPentago implements Observer {
 
     /**
      * Builder thats will start the stage and will add the model to it
+     *
      * @param model
-     * @param stage 
+     * @param stage
      */
     public FxPentago(Facade model, Stage stage) {
         this.model = model;
         start(stage);
     }
-    
 
     public void start(Stage stage) {
         board = new FxBoard(model);
@@ -54,8 +54,8 @@ public final class FxPentago implements Observer {
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void setPlayer(){
+
+    public void setPlayer() {
         info.initData();
         info.playerData();
     }

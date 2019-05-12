@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
  * @author G45502
  */
 public class WrongStateAddMarble extends Alert {
-    
+
     public WrongStateAddMarble() {
         super(AlertType.INFORMATION);
         this.setTitle("Wrong State");

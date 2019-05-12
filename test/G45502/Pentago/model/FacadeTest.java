@@ -1,6 +1,5 @@
 package G45502.Pentago.model;
 
-import G45502.Pentago.exception.GameException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -15,6 +15,7 @@ public class Pentago extends Application {
 
     /**
      * Start the view and Game
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -23,13 +24,14 @@ public class Pentago extends Application {
 
     /**
      * Start the stage and add the game to the stage.
+     *
      * @param stage Stage where the scene will be added to.
-     * @throws Exception 
+     * @throws Exception
      */
     @Override
     public void start(Stage stage) throws Exception {
         Facade game = new Game();
-        FxPentago fxView = new FxPentago(game,stage);
+        FxPentago fxView = new FxPentago(game, stage);
         FxControleur fxcontroleur = new FxControleur(game, fxView);
         fxcontroleur.startGame();
     }

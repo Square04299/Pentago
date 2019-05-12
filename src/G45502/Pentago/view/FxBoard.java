@@ -13,7 +13,7 @@ import javafx.scene.layout.RowConstraints;
  *
  * @author G45502
  */
-public class FxBoard extends GridPane{
+public class FxBoard extends GridPane {
 
     private final int MAX_SIZE_Quadrant;
     private final int MAX_SIZE_Marble;
@@ -21,6 +21,7 @@ public class FxBoard extends GridPane{
 
     /**
      * Builder of board
+     *
      * @param model Game
      */
     public FxBoard(Facade model) {
@@ -35,7 +36,7 @@ public class FxBoard extends GridPane{
         setStyle();
         for (int i = 0; i < MAX_SIZE_Quadrant; i++) {
             for (int j = 0; j < MAX_SIZE_Quadrant; j++) {
-                this.add(new FxQuadrant(model,j+i+i), j, i);
+                this.add(new FxQuadrant(model, j + i + i), j, i);
             }
         }
     }
@@ -71,14 +72,14 @@ public class FxBoard extends GridPane{
             for (int j = 0; j < MAX_SIZE_Quadrant; j++) {
                 for (int k = 0; k < MAX_SIZE_Marble; k++) {
                     for (int l = 0; l < MAX_SIZE_Marble; l++) {
-                        int color = game.getColorMarble(j+i+i, k, l);
+                        int color = game.getColorMarble(j + i + i, k, l);
                         this.changeColor(i, j, l, k, color);
                     }
                 }
             }
         }
     }
-    
+
     private void changeColor(int quadrantX, int quadrantY, int x, int y, int color) {
         ObservableList<Node> node = this.getChildren();
         for (Node child : node) {

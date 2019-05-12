@@ -50,13 +50,13 @@ public class QuadrantTest {
      * Test of rotateRight method, of class Quadrant.
      */
     @Test
-    public void testRotateLeft() {
+    public void testRotateRight() {
         
-        System.out.println("rotateLeft");
+        System.out.println("rotateRight");
         Quadrant instance = new Quadrant();
         instance.addPiece(0, 0, Marble.WHITE);
         
-        instance.rotateLeft();
+        instance.rotateRight();
         
         Quadrant expected = new Quadrant();
         expected.addPiece(2, 0, Marble.WHITE);
@@ -71,12 +71,12 @@ public class QuadrantTest {
      * Test of rotateLeft method, of class Quadrant.
      */
     @Test
-    public void testRotateRight() {
-        System.out.println("rotateRight");
+    public void testRotateLeft() {
+        System.out.println("rotateLeft");
         Quadrant instance = new Quadrant();
         instance.addPiece(0, 0, Marble.WHITE);
         
-        instance.rotateRight();
+        instance.rotateLeft();
         
         Quadrant expected = new Quadrant();
         expected.addPiece(0, 2, Marble.WHITE);

@@ -2,6 +2,7 @@ package G45502.Pentago.model;
 
 /**
  * Marble that will be placed on the board
+ *
  * @author G45502
  */
 public enum Marble {
@@ -18,7 +19,6 @@ public enum Marble {
      * Default color of a board, with a value of -1
      */
     EMPTY(-1);
-    
 
     private final int value;
 
@@ -34,6 +34,5 @@ public enum Marble {
     public int getValue() {
         return value;
     }
-    
-    
+
 }

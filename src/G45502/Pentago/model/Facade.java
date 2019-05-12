@@ -2,13 +2,12 @@ package G45502.Pentago.model;
 
 import java.util.Observable;
 
-
 /**
  *
  * @author G45502
  */
 public abstract class Facade extends Observable {
-    
+
     /**
      * Getter of quadrant
      *
@@ -16,7 +15,7 @@ public abstract class Facade extends Observable {
      * @return 2d array of the selected Quadrant
      */
     public abstract Quadrant getQuadrant(int value);
-    
+
     /**
      * Set the color of the marble in the view when adding player to the list
      *
@@ -43,7 +42,7 @@ public abstract class Facade extends Observable {
      * Change the current Player by knowing the color of it's marble if the
      * current player has a white marble, it will change it to black
      */
-     public abstract void changeCurrentPlayer();
+    public abstract void changeCurrentPlayer();
 
     /**
      * Place a white or black marble in a specific x, y and quadrant
@@ -73,14 +72,14 @@ public abstract class Facade extends Observable {
      *
      * @return true if STATE.OVER
      */
-     public abstract boolean isOver();
+    public abstract boolean isOver();
 
     /**
      * Setter of the State
      *
      * @param state will change the state with this value
      */
-     abstract void setState(State state);
+    abstract void setState(State state);
 
     /**
      * Get the winner by looking if a marble has been placed in the x=0, y=0 and
@@ -94,6 +93,7 @@ public abstract class Facade extends Observable {
 
     /**
      * Return the value of the marble at the quadrant, position x and y
+     *
      * @param i Quadrant
      * @param j X axis
      * @param k Y axis

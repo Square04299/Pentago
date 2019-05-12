@@ -3,7 +3,6 @@ package G45502.Pentago.view;
 import G45502.Pentago.model.Facade;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -25,6 +24,7 @@ public class FxQuadrant extends GridPane {
 
     /**
      * Builder of Quadrant
+     *
      * @param model Model of the game
      * @param id id of the quadrant
      */
@@ -40,14 +40,14 @@ public class FxQuadrant extends GridPane {
         setStyle();
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
-                FxMarble marble = new FxMarble(j,i);
+                FxMarble marble = new FxMarble(j, i);
                 this.add(marble, j, i);
                 marble.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
                     FxMarble marbleClicked = (FxMarble) event.getSource();
 //                        System.out.println("x " +marbleClicked.getX());
 //                        System.out.println("y " +marbleClicked.getY());
 //                        System.out.println("Q " +((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
-model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant)marbleClicked.getParent()).getNumberQuadrant());
+                    model.placePiece(marbleClicked.getX(), marbleClicked.getY(), ((FxQuadrant) marbleClicked.getParent()).getNumberQuadrant());
                 });
             }
         }

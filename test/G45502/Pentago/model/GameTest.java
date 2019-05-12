@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  * @author G45502
  */
 public class GameTest {
-    
+
     /**
      * Builder of Game Test
      */
@@ -24,14 +24,14 @@ public class GameTest {
     @Test
     public void testGetCurrentPlayerBlackAndWhite() {
         System.out.println("getCurrentPlayer Black and White");
-        
+
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
-        
+
         Player result = instance.getCurrentPlayer();
         assertEquals(player1, result);
     }
@@ -44,11 +44,11 @@ public class GameTest {
         System.out.println("changeCurrentPlayer");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
-        
+
         instance.changeCurrentPlayer();
         Player result = instance.getCurrentPlayer();
         assertEquals(player2.getColor(), result.getColor());
@@ -63,20 +63,20 @@ public class GameTest {
         int x = 0;
         int y = 0;
         int q = 0;
-        
+
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
-        
+
         instance.placePiece(x, y, q);
         Quadrant expected = instance.getQuadrant(q);
-        
+
         assertTrue(expected.getPoint(0, 0) == Marble.WHITE);
     }
-    
+
     /**
      * Test of placePiece method, of class Game.
      */
@@ -86,10 +86,10 @@ public class GameTest {
         int x = 0;
         int y = 0;
         int q = 0;
-        
+
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -105,7 +105,7 @@ public class GameTest {
         System.out.println("isOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -114,7 +114,7 @@ public class GameTest {
         boolean result = instance.isOver();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of isOver method, of class Game.
      */
@@ -123,7 +123,7 @@ public class GameTest {
         System.out.println("isOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -140,7 +140,7 @@ public class GameTest {
         System.out.println("getWinnersStateOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -149,7 +149,7 @@ public class GameTest {
         Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of getWinners method, of class Game.
      */
@@ -158,7 +158,7 @@ public class GameTest {
         System.out.println("getWinnersStateOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -167,7 +167,7 @@ public class GameTest {
         Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of getWinners method, of class Game.
      */
@@ -176,7 +176,7 @@ public class GameTest {
         System.out.println("getWinnersStateOver");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -188,7 +188,7 @@ public class GameTest {
         Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of getWinners method, of class Game.
      */
@@ -197,7 +197,7 @@ public class GameTest {
         System.out.println("getWinnersNoWinner");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -205,7 +205,6 @@ public class GameTest {
         Player result = instance.getWinners();
         assertEquals(expResult, result);
     }
-
 
     /**
      * Test of getBoard method, of class Game.
@@ -215,11 +214,11 @@ public class GameTest {
         System.out.println("getBoard");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
-        
+
         Board expResult = instance.getBoard();
         Board result = instance.getBoard();
         assertEquals(expResult, result);
@@ -234,7 +233,7 @@ public class GameTest {
         int value = 0;
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -252,7 +251,7 @@ public class GameTest {
         State state = State.ROTATE;
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
@@ -263,7 +262,7 @@ public class GameTest {
     /**
      * Test of getPlayers method, of class Game.
      */
-    @Test(expected = AssertionError.class)
+    @Test(expected = NullPointerException.class)
     public void testGetPlayersNull() {
         System.out.println("getPlayers");
         Game instance = new Game();
@@ -271,7 +270,7 @@ public class GameTest {
         List<Player> result = instance.getPlayers();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of getPlayers method, of class Game.
      */
@@ -307,7 +306,7 @@ public class GameTest {
         Marble result = instance.setColor();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of setColor method, of class Game.
      */
@@ -316,7 +315,7 @@ public class GameTest {
         System.out.println("setColorBlack");
         Player player1 = new Player("Lucas", Marble.WHITE);
         Player player2 = new Player("Christopher", Marble.BLACK);
-        
+
         Game instance = new Game();
         instance.addPlayer(player1);
         instance.addPlayer(player2);
