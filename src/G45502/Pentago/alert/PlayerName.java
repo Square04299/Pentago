@@ -16,8 +16,9 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
 /**
- * Alert to ask the player named Source :
- * https://code.makery.ch/blog/javafx-dialogs-official/
+ * Alert to ask the player named
+ * Source : https://code.makery.ch/blog/javafx-dialogs-official/
+ * Under the section : Custom Login Dialog
  *
  * @author G45502
  */
@@ -26,7 +27,7 @@ public class PlayerName {
     private Facade model;
     private boolean bPlayer1 = false;
     private boolean bPlayer2 = false;
-    private Node loginButton;
+    private Node startGameButton;
 
     public PlayerName(Facade model) {
         this.model = model;
@@ -37,8 +38,8 @@ public class PlayerName {
         dialog.setHeaderText("Name of both player");
 
 // Set the button types.
-        ButtonType loginButtonType = new ButtonType("Start Game", ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType);
+        ButtonType startGameButtonType = new ButtonType("Start Game", ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(startGameButtonType);
 
 // Create the player1 and player2 labels and fields.
         GridPane grid = new GridPane();
@@ -56,9 +57,9 @@ public class PlayerName {
         grid.add(new Label("Player 2 : "), 0, 1);
         grid.add(player2, 1, 1);
 
-// Enable/Disable login button depending on whether a player1 was entered.
-        loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
-        loginButton.setDisable(true);
+// Enable/Disable Start Game button depending on whether a player1 was entered.
+        startGameButton = dialog.getDialogPane().lookupButton(startGameButtonType);
+        startGameButton.setDisable(true);
 
 // Do some validation (using the Java 8 lambda syntax).
 //Player 1 field
@@ -85,9 +86,9 @@ public class PlayerName {
 // Request focus on the player1 field by default.
         Platform.runLater(() -> player1.requestFocus());
 
-// Convert the result to a player1-player2-pair when the login button is clicked.
+// Convert the result to a player1-player2-pair when the startGame button is clicked.
         dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == loginButtonType) {
+            if (dialogButton == startGameButtonType) {
                 return new Pair<>(player1.getText(), player2.getText());
             }
             return null;
@@ -95,16 +96,16 @@ public class PlayerName {
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
-        result.ifPresent(usernamePassword -> {
-            model.addPlayer(new Player(usernamePassword.getKey(), Marble.WHITE));
-            model.addPlayer(new Player(usernamePassword.getValue(), Marble.BLACK));
+        result.ifPresent(playerName -> {
+            model.addPlayer(new Player(playerName.getKey(), Marble.WHITE));
+            model.addPlayer(new Player(playerName.getValue(), Marble.BLACK));
         });
     }
     
     void validation(){
-        //Validation that the 2 field has been filled
+//Validation that the 2 field has been filled
         if (bPlayer1 && bPlayer2) {
-            loginButton.setDisable(false);
+            startGameButton.setDisable(false);
         }
     }
 }
