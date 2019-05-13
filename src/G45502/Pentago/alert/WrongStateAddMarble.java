@@ -4,12 +4,13 @@ import javafx.scene.control.Alert;
 
 /**
  * alert of the player try to place a second marble
+ *
  * @author G45502
  */
 public class WrongStateAddMarble extends Alert {
 
     /**
-     *
+     * Builder of diaolog box
      */
     public WrongStateAddMarble() {
         super(AlertType.INFORMATION);

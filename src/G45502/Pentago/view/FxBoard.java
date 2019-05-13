@@ -63,6 +63,11 @@ public class FxBoard extends GridPane {
         }
     }
 
+    /**
+     * Will go in each quadrant a change the color to a value
+     *
+     * @param game
+     */
     public void updateBoard(Facade game) {
         changeBoard(game);
     }

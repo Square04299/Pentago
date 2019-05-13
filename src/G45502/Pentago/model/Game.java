@@ -57,6 +57,7 @@ public class Game extends Facade {
      *
      * @return
      */
+    @Override
     public List<Move> getMove() {
         return move;
     }
@@ -164,9 +165,12 @@ public class Game extends Facade {
             wrongStateMarble.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
         } else {
-            System.out.println("Grey Placed");
-            board.addPiece(x, y, this.currentPlayer.getColor(), q);
-            //currentPlayer.setTurn();
+            if (turn < 2) {
+                board.addPiece(x, y, Marble.GREY, q);
+                turn++;
+            } else {
+                board.addPiece(x, y, this.currentPlayer.getColor(), q);
+            }
             this.tempMove = new Move(this.currentPlayer.getColor(), x, y, q);
             this.setState(State.ROTATE);
             setChanged();

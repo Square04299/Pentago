@@ -31,6 +31,11 @@ public final class FxPentago implements Observer {
         start(stage);
     }
 
+    /**
+     * Start the GUI
+     *
+     * @param stage
+     */
     public void start(Stage stage) {
         board = new FxBoard(model);
         info = new FxInfo(model);
@@ -55,6 +60,10 @@ public final class FxPentago implements Observer {
         stage.show();
     }
 
+    /**
+     * Will set the correct name and marble color as text to know who it is to
+     * play
+     */
     public void setPlayer() {
         info.initData();
         info.playerData();

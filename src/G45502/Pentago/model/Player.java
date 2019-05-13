@@ -12,8 +12,6 @@ public class Player {
 
     private final String name;
     private final Marble color;
-    private final Marble firstColor;
-    private int turn;
 
     /**
      * Builder of Player Will Build the name and marble color
@@ -24,8 +22,6 @@ public class Player {
     public Player(String name, Marble color) {
         this.name = name;
         this.color = color;
-        this.firstColor = Marble.GREY;
-        this.turn = 0;
     }
 
     /**
@@ -43,14 +39,7 @@ public class Player {
      * @return color of the marble
      */
     public Marble getColor() {
-//        if (turn < 1) {
-//            return firstColor;
-//        }
         return color;
-    }
-    
-    public void setTurn(){
-        turn++;
     }
 
     boolean isWhite() {

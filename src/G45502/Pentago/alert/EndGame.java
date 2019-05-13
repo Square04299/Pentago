@@ -4,12 +4,13 @@ import javafx.scene.control.Alert;
 
 /**
  * Display that the game is over
+ *
  * @author G45502
  */
 public class EndGame extends Alert {
 
     /**
-     *
+     * Builder of diaolog box
      */
     public EndGame() {
         super(AlertType.ERROR);

@@ -7,7 +7,6 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -29,6 +28,11 @@ public class FxInfo extends VBox implements Observer {
     private Help helpAlert;
     private Historique historique;
 
+    /**
+     * Builder of the left side with all the information a player needs
+     *
+     * @param model
+     */
     public FxInfo(Facade model) {
         super(10);
         this.model = model;
@@ -72,29 +76,20 @@ public class FxInfo extends VBox implements Observer {
             model.rotationQuadrantRight(num);
         });
 
-        help.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent t) {
-                helpAlert.showAndWait();
-            }
+        help.setOnAction((ActionEvent t) -> {
+            helpAlert.showAndWait();
         });
 
-        quit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent t) {
-                Platform.exit();
-            }
+        quit.setOnAction((ActionEvent t) -> {
+            Platform.exit();
         });
-        
-        historiqueB.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent t) {
-                historique.showAndWait();
-            }
+
+        historiqueB.setOnAction((ActionEvent t) -> {
+            historique.showAndWait();
         });
 
         this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, one,
-                two, three, four, left, right, historiqueB ,help, quit);
+                two, three, four, left, right, historiqueB, help, quit);
     }
 
     @Override

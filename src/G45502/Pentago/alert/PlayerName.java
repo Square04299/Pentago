@@ -16,15 +16,14 @@ import javafx.scene.text.Text;
 import javafx.util.Pair;
 
 /**
- * Alert to ask the player named
- * Source : https://code.makery.ch/blog/javafx-dialogs-official/
- * Under the section : Custom Login Dialog
+ * Alert to ask the player named Source :
+ * https://code.makery.ch/blog/javafx-dialogs-official/ Under the section :
+ * Custom Login Dialog
  *
  * @author G45502
  */
 public class PlayerName {
 
-    private Facade model;
     private boolean bPlayer1 = false;
     private boolean bPlayer2 = false;
     private Node startGameButton;
@@ -34,7 +33,6 @@ public class PlayerName {
      * @param model
      */
     public PlayerName(Facade model) {
-        this.model = model;
 
 // Create the custom dialog.
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -71,7 +69,7 @@ public class PlayerName {
             if (!newValue.trim().isEmpty()) {
                 bPlayer1 = true;
                 validation();
-            }else{
+            } else {
                 bPlayer1 = false;
             }
         });
@@ -80,11 +78,11 @@ public class PlayerName {
             if (!newValue.trim().isEmpty()) {
                 bPlayer2 = true;
                 validation();
-            }else{
+            } else {
                 bPlayer2 = false;
             }
         });
-        
+
         dialog.getDialogPane().setContent(grid);
 
 // Request focus on the player1 field by default.
@@ -105,8 +103,8 @@ public class PlayerName {
             model.addPlayer(new Player(playerName.getValue(), Marble.BLACK));
         });
     }
-    
-    void validation(){
+
+    void validation() {
 //Validation that the 2 field has been filled
         if (bPlayer1 && bPlayer2) {
             startGameButton.setDisable(false);

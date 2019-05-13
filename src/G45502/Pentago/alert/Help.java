@@ -4,12 +4,13 @@ import javafx.scene.control.Alert;
 
 /**
  * Help with the rules od the game
+ *
  * @author G45502
  */
 public class Help extends Alert {
 
     /**
-     *
+     * Builder of diaolog box
      */
     public Help() {
         super(AlertType.INFORMATION);

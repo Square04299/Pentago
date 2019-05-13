@@ -13,6 +13,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
 /**
+ * GridPane that contain all the marble
  *
  * @author G45502
  */
@@ -53,14 +54,31 @@ public class FxQuadrant extends GridPane {
         }
     }
 
+    /**
+     * Getter of the number Of quadrant
+     *
+     * @return a number between 0 and 3
+     */
     public int getNumberQuadrant() {
         return numberQuadrant;
     }
 
+    /**
+     * Getter of the Game
+     *
+     * @return Game
+     */
     public Facade getModel() {
         return model;
     }
 
+    /**
+     * Getter of each marble in the gridpane
+     *
+     * @param x x Axis
+     * @param y y axis
+     * @return One of the children of the gridpane
+     */
     public FxMarble getCircle(int x, int y) {
         ObservableList<Node> node = this.getChildren();
         for (Node child : node) {
@@ -69,10 +87,6 @@ public class FxQuadrant extends GridPane {
             }
         }
         return null;
-    }
-
-    public void addMarble(Color color) {
-        this.getChildren().get(REMAINING);
     }
 
     private void setStyle() {

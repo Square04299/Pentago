@@ -16,9 +16,10 @@ public abstract class Facade extends Observable {
      * @return 2d array of the selected Quadrant
      */
     public abstract Quadrant getQuadrant(int value);
-    
+
     /**
      * Getter of Move
+     *
      * @return List of all move done in the game
      */
     public abstract List<Move> getMove();

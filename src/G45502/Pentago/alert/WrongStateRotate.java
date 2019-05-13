@@ -4,12 +4,13 @@ import javafx.scene.control.Alert;
 
 /**
  * Tells the player that he cnat' rotate
+ *
  * @author G45502
  */
 public class WrongStateRotate extends Alert {
 
     /**
-     *
+     * Builder of diaolog box
      */
     public WrongStateRotate() {
         super(AlertType.INFORMATION);

@@ -5,11 +5,10 @@ import javafx.scene.control.Alert;
 
 /**
  * Show the winner
+ *
  * @author G45502
  */
 public class Win extends Alert {
-
-    private Facade model;
 
     /**
      *
@@ -18,7 +17,6 @@ public class Win extends Alert {
     public Win(Facade model) {
         super(Alert.AlertType.INFORMATION);
         //super(AlertType.CONFIRMATION);
-        this.model = model;
         this.setTitle("ScoreBoard");
         this.setHeaderText("Player/Players that got 5 marble in a row");
         this.setContentText(model.getWinners().getName());

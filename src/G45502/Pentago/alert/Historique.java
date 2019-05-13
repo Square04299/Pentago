@@ -21,6 +21,9 @@ public class Historique extends Alert implements Observer {
     private Facade model;
     private GridPane grid;
 
+    /**
+     * Builder of diaolog box
+     */
     public Historique() {
         super(AlertType.INFORMATION);
         this.grid = new GridPane();
@@ -66,10 +69,10 @@ public class Historique extends Alert implements Observer {
             Text y = new Text();
             y.setText(Integer.toString(model.getMove().get(i).getY()));
             Text quadrant = new Text();
-            quadrant.setText(Integer.toString(model.getMove().get(i).getQuadrant()+1));
+            quadrant.setText(Integer.toString(model.getMove().get(i).getQuadrant() + 1));
             Text rotation = new Text();
             rotation.setText(model.getMove().get(i).getRotation());
-            
+
             grid.addRow(i + 1, color, x, y, quadrant, rotation);
         }
     }
