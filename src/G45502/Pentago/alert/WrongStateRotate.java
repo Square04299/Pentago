@@ -3,11 +3,14 @@ package G45502.Pentago.alert;
 import javafx.scene.control.Alert;
 
 /**
- *
+ * Tells the player that he cnat' rotate
  * @author G45502
  */
 public class WrongStateRotate extends Alert {
 
+    /**
+     *
+     */
     public WrongStateRotate() {
         super(AlertType.INFORMATION);
         this.setTitle("Wrong State");

@@ -3,11 +3,14 @@ package G45502.Pentago.alert;
 import javafx.scene.control.Alert;
 
 /**
- *
+ * Help with the rules od the game
  * @author G45502
  */
 public class Help extends Alert {
 
+    /**
+     *
+     */
     public Help() {
         super(AlertType.INFORMATION);
         this.setTitle("Game Help");

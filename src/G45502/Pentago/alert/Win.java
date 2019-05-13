@@ -4,13 +4,17 @@ import G45502.Pentago.model.Facade;
 import javafx.scene.control.Alert;
 
 /**
- *
+ * Show the winner
  * @author G45502
  */
 public class Win extends Alert {
 
     private Facade model;
 
+    /**
+     *
+     * @param model
+     */
     public Win(Facade model) {
         super(Alert.AlertType.INFORMATION);
         //super(AlertType.CONFIRMATION);

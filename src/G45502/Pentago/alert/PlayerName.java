@@ -29,6 +29,10 @@ public class PlayerName {
     private boolean bPlayer2 = false;
     private Node startGameButton;
 
+    /**
+     *
+     * @param model
+     */
     public PlayerName(Facade model) {
         this.model = model;
 
