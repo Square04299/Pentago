@@ -66,6 +66,9 @@ public class FxMarble extends Circle {
             case 1:
                 this.setFill(Color.WHITE);
                 break;
+            case 2:
+                this.setFill(Color.GREY);
+                break;
             default:
                 this.setFill(Color.PINK);
                 break;

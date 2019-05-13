@@ -16,6 +16,10 @@ public enum Marble {
      */
     WHITE(1),
     /**
+     * Color of the Marble, with a value of 2
+     */
+    GREY(2),
+    /**
      * Default color of a board, with a value of -1
      */
     EMPTY(-1);

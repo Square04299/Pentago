@@ -1,6 +1,7 @@
 package G45502.Pentago.view;
 
 import G45502.Pentago.alert.Help;
+import G45502.Pentago.alert.Historique;
 import G45502.Pentago.model.Facade;
 import java.util.Observable;
 import java.util.Observer;
@@ -24,8 +25,9 @@ public class FxInfo extends VBox implements Observer {
     private Text text, text1, tPlayerName, tMarbleColor;
     private ToggleGroup group;
     private RadioButton one, two, three, four;
-    private Button left, right, help, quit;
+    private Button left, right, help, quit, historiqueB;
     private Help helpAlert;
+    private Historique historique;
 
     public FxInfo(Facade model) {
         super(10);
@@ -55,6 +57,9 @@ public class FxInfo extends VBox implements Observer {
         help = new Button("Help");
         helpAlert = new Help();
         quit = new Button("Quit");
+        this.historique = new Historique();
+        model.addObserver(historique);
+        historiqueB = new Button("Historique");
 
         left.setOnAction((ActionEvent t) -> {
             RadioButton selected = (RadioButton) group.getSelectedToggle();
@@ -80,8 +85,16 @@ public class FxInfo extends VBox implements Observer {
                 Platform.exit();
             }
         });
+        
+        historiqueB.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                historique.showAndWait();
+            }
+        });
 
-        this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, one, two, three, four, left, right, help, quit);
+        this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, one,
+                two, three, four, left, right, historiqueB ,help, quit);
     }
 
     @Override

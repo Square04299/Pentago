@@ -19,6 +19,10 @@ public class Game extends Facade {
     private final List<Player> players;
     private Player currentPlayer;
     private State gameState;
+    private List<Move> move;
+    private Move tempMove;
+    private int turn;
+    //Alerts
     private final WrongStateAddMarble wrongStateMarble;
     private final WrongStateRotate wrongStateRotate;
     private final EndGame endGame;
@@ -35,6 +39,8 @@ public class Game extends Facade {
         this.wrongStateMarble = new WrongStateAddMarble();
         this.wrongStateRotate = new WrongStateRotate();
         this.endGame = new EndGame();
+        this.move = new ArrayList<>();
+        this.turn = 0;
     }
 
     /**
@@ -44,6 +50,15 @@ public class Game extends Facade {
      */
     public Board getBoard() {
         return board;
+    }
+
+    /**
+     * Getter of Move
+     *
+     * @return
+     */
+    public List<Move> getMove() {
+        return move;
     }
 
     /**
@@ -149,8 +164,10 @@ public class Game extends Facade {
             wrongStateMarble.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
         } else {
+            System.out.println("Grey Placed");
             board.addPiece(x, y, this.currentPlayer.getColor(), q);
-
+            //currentPlayer.setTurn();
+            this.tempMove = new Move(this.currentPlayer.getColor(), x, y, q);
             this.setState(State.ROTATE);
             setChanged();
             notifyObservers("A marble has been added to the board");
@@ -171,6 +188,9 @@ public class Game extends Facade {
             throw new GameException("You are in the wrong State " + gameState);
         } else {
             this.board.getQuadrant(value).rotateRight();
+            tempMove.setRotation("Right");
+            move.add(tempMove);
+            tempMove = null;
             this.setState(State.PLACE);
             isOver();
             changeCurrentPlayer();
@@ -193,6 +213,9 @@ public class Game extends Facade {
             throw new GameException("You are in the wrong State " + gameState);
         } else {
             this.board.getQuadrant(value).rotateLeft();
+            tempMove.setRotation("Left");
+            move.add(tempMove);
+            tempMove = null;
             this.setState(State.PLACE);
             isOver();
             changeCurrentPlayer();
@@ -259,11 +282,9 @@ public class Game extends Facade {
     @Override
     public int getColorMarble(int i, int j, int k) {
         Marble marble = this.board.getQuadrant(i).getPoint(j, k);
-        if (marble == Marble.WHITE) {
-            return marble.getValue();
-        } else if (marble == Marble.BLACK) {
-            return marble.getValue();
+        if (marble == Marble.EMPTY) {
+            return -1;
         }
-        return -1;
+        return marble.getValue();
     }
 }
