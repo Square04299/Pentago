@@ -72,6 +72,7 @@ public final class FxPentago implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         model = (Facade) o;
+        System.out.println("---------------------------");
         System.out.println("Update FxView");
         System.out.println(arg);
         if (model.isOver()) {

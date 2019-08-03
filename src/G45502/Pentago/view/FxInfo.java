@@ -1,7 +1,7 @@
 package G45502.Pentago.view;
 
 import G45502.Pentago.alert.Help;
-import G45502.Pentago.alert.Historique;
+import G45502.Pentago.model.Historique;
 import G45502.Pentago.model.Facade;
 import java.util.Observable;
 import java.util.Observer;
@@ -27,6 +27,7 @@ public class FxInfo extends VBox implements Observer {
     private Button left, right, help, quit, historiqueB;
     private Help helpAlert;
     private Historique historique;
+    //private HistoriqueAlert historique;
 
     /**
      * Builder of the left side with all the information a player needs
@@ -61,7 +62,8 @@ public class FxInfo extends VBox implements Observer {
         help = new Button("Help");
         helpAlert = new Help();
         quit = new Button("Quit");
-        this.historique = new Historique();
+        //this.historique = new HistoriqueAlert();
+        this.historique = new Historique(model);
         model.addObserver(historique);
         historiqueB = new Button("Historique");
 
@@ -85,8 +87,10 @@ public class FxInfo extends VBox implements Observer {
         });
 
         historiqueB.setOnAction((ActionEvent t) -> {
-            historique.showAndWait();
+            Historique temp = new Historique(model);
+            temp.show();
         });
+        
 
         this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, one,
                 two, three, four, left, right, historiqueB, help, quit);
