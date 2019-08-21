@@ -23,10 +23,12 @@ public class Game extends Facade {
     private Move tempMove;
     private final ParseBoard parseboard;
     private List<Marble> winners;
+    private int turn;
     //Alerts
     private final WrongStateAddMarble wrongStateMarble;
     private final WrongStateRotate wrongStateRotate;
     private final EndGame endGame;
+
 
     /**
      * Builder of Game Creates a Board, Array of players, GameState and the
@@ -43,6 +45,7 @@ public class Game extends Facade {
         this.move = new ArrayList<>();
         this.parseboard = new ParseBoard(this);
         this.winners = new ArrayList<>();
+        this.turn = 0;
     }
 
     /**
@@ -82,6 +85,10 @@ public class Game extends Facade {
      */
     public List<Player> getPlayers() {
         return players;
+    }
+    
+    public int getTurn(){
+        return turn;
     }
 
     /**
@@ -167,8 +174,14 @@ public class Game extends Facade {
             wrongStateMarble.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
         } else {
-            board.addPiece(x, y, this.currentPlayer.getColor(), q);
-            this.tempMove = new Move(this.currentPlayer.getColor(), x, y, q);
+            if (turn < 2) {
+                board.addPiece(x, y, Marble.GREY, q);
+                this.tempMove = new Move(Marble.GREY, x, y, q);
+                turn++;
+            }else{
+                board.addPiece(x, y, this.currentPlayer.getColor(), q);
+                this.tempMove = new Move(this.currentPlayer.getColor(), x, y, q);
+            }
             this.setState(State.ROTATE);
             setChanged();
             notifyObservers("A marble has been added to the board");

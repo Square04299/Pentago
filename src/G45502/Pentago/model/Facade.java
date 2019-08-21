@@ -9,6 +9,8 @@ import java.util.Observable;
  */
 public abstract class Facade extends Observable {
 
+    public abstract int getTurn();
+
     /**
      * Getter of quadrant
      *
@@ -108,4 +110,5 @@ public abstract class Facade extends Observable {
      * @return -1 if the color is null, 0 for black and 1 for white
      */
     public abstract int getColorMarble(int i, int j, int k);
+
 }

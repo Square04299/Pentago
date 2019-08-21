@@ -56,9 +56,10 @@ public class ParseBoard {
         countB = 0;
         
         for (Marble marble : parseLine) {
-            if (marble == Marble.WHITE) {
+            if (marble == Marble.WHITE || marble == Marble.GREY) {
                 countW++;
-            }else if(marble == Marble.BLACK){
+            }
+            if(marble == Marble.BLACK || marble == Marble.GREY){
                 countB++;
             }
         }

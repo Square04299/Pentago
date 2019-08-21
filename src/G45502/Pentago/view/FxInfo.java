@@ -2,6 +2,7 @@ package G45502.Pentago.view;
 
 import G45502.Pentago.alert.Help;
 import G45502.Pentago.model.Facade;
+import G45502.Pentago.model.Marble;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.application.Platform;
@@ -105,7 +106,11 @@ public class FxInfo extends VBox implements Observer {
 
     void initData() {
         this.currentPlayerName = model.getCurrentPlayer().getName();
-        this.marbleColor = model.getCurrentPlayer().getColor().toString();
+        if (model.getTurn() < 2) {
+            this.marbleColor = Marble.GREY.toString();
+        }else{
+            this.marbleColor = model.getCurrentPlayer().getColor().toString();
+        }
     }
 
     void playerData() {
