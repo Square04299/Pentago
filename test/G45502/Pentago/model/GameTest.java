@@ -146,7 +146,7 @@ public class GameTest {
         instance.addPlayer(player2);
         instance.setState(State.OVER);
         String expResult = player1.getName();
-        String result = instance.getWinners().getName();
+        String result = instance.getWinners().get(0).getName();
         assertEquals(expResult, result);
     }
 
@@ -164,7 +164,7 @@ public class GameTest {
         instance.addPlayer(player2);
         instance.placePiece(0, 0, 0);
         Player expResult = player1;
-        Player result = instance.getWinners();
+        Player result = instance.getWinners().get(0);
         assertEquals(expResult, result);
     }
 
@@ -185,7 +185,7 @@ public class GameTest {
         instance.changeCurrentPlayer();
         instance.placePiece(0, 0, 0);
         String expResult = instance.getCurrentPlayer().getName();
-        String result = instance.getWinners().getName();
+        String result = instance.getWinners().get(0).getName();
         assertEquals(expResult, result);
     }
 
@@ -202,7 +202,7 @@ public class GameTest {
         instance.addPlayer(player1);
         instance.addPlayer(player2);
         Player expResult = null;
-        Player result = instance.getWinners();
+        Player result = instance.getWinners().get(0);
         assertEquals(expResult, result);
     }
 

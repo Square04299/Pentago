@@ -1,7 +1,6 @@
 package G45502.Pentago.view;
 
 import G45502.Pentago.alert.Help;
-import G45502.Pentago.model.Historique;
 import G45502.Pentago.model.Facade;
 import java.util.Observable;
 import java.util.Observer;
@@ -26,7 +25,7 @@ public class FxInfo extends VBox implements Observer {
     private RadioButton one, two, three, four;
     private Button left, right, help, quit, historiqueB;
     private Help helpAlert;
-    private Historique historique;
+    private FxHistorique historique;
     //private HistoriqueAlert historique;
 
     /**
@@ -63,7 +62,7 @@ public class FxInfo extends VBox implements Observer {
         helpAlert = new Help();
         quit = new Button("Quit");
         //this.historique = new HistoriqueAlert();
-        this.historique = new Historique(model);
+        this.historique = new FxHistorique(model);
         model.addObserver(historique);
         historiqueB = new Button("Historique");
 
@@ -87,7 +86,7 @@ public class FxInfo extends VBox implements Observer {
         });
 
         historiqueB.setOnAction((ActionEvent t) -> {
-            Historique temp = new Historique(model);
+            FxHistorique temp = new FxHistorique(model);
             temp.show();
         });
         

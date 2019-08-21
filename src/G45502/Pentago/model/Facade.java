@@ -97,7 +97,7 @@ public abstract class Facade extends Observable {
      * condition are right he will be selected otherwise it will just ignore and
      * continue the logique of the game
      */
-    public abstract Player getWinners();
+    public abstract List<Player> getWinners();
 
     /**
      * Return the value of the marble at the quadrant, position x and y

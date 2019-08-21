@@ -75,6 +75,7 @@ public final class FxPentago implements Observer {
         System.out.println("---------------------------");
         System.out.println("Update FxView");
         System.out.println(arg);
+        
         if (model.isOver()) {
             board.updateBoard(model);
             Win win = new Win(model);

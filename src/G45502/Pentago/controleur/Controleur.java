@@ -37,7 +37,7 @@ public class Controleur {
             game.changeCurrentPlayer();
         }
         view.viewBoard();
-        view.showWinner(game.getWinners());
+        //view.showWinner(game.getWinners());
     }
 
     /**

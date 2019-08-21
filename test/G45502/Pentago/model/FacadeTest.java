@@ -203,7 +203,7 @@ public class FacadeTest {
         instance.addPlayer(player2);
         instance.setState(State.OVER);
         String expResult = player1.getName();
-        String result = instance.getWinners().getName();
+        String result = instance.getWinners().get(0).getName();
         assertEquals(expResult, result);
     }
 }

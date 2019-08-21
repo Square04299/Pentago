@@ -19,7 +19,11 @@ public class Win extends Alert {
         //super(AlertType.CONFIRMATION);
         this.setTitle("ScoreBoard");
         this.setHeaderText("Player/Players that got 5 marble in a row");
-        this.setContentText(model.getWinners().getName());
+        if (model.getWinners().size() == 1) {
+            this.setContentText(model.getWinners().get(0).getName());
+        }else{
+            this.setContentText(model.getWinners().get(0).getName() + "\n" + model.getWinners().get(1).getName());
+        }
 
 //        Optional<ButtonType> result = this.showAndWait();
 //        if (result.get() == ButtonType.OK) {

@@ -1,5 +1,6 @@
-package G45502.Pentago.model;
+package G45502.Pentago.view;
 
+import G45502.Pentago.model.Facade;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.geometry.Insets;
@@ -14,13 +15,13 @@ import javafx.stage.Stage;
  *
  * @author G45502
  */
-public class Historique extends Stage implements Observer{
+public class FxHistorique extends Stage implements Observer{
     
     private Facade model;
     private Pane pane;
     private GridPane grid;
 
-    public Historique(Facade model) {
+    public FxHistorique(Facade model) {
         this.pane = new Pane();
         this.grid = new GridPane();
         pane.getChildren().add(grid);

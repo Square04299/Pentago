@@ -21,7 +21,8 @@ public class Game extends Facade {
     private State gameState;
     private List<Move> move;
     private Move tempMove;
-    private int turn;
+    private final ParseBoard parseboard;
+    private List<Marble> winners;
     //Alerts
     private final WrongStateAddMarble wrongStateMarble;
     private final WrongStateRotate wrongStateRotate;
@@ -40,7 +41,8 @@ public class Game extends Facade {
         this.wrongStateRotate = new WrongStateRotate();
         this.endGame = new EndGame();
         this.move = new ArrayList<>();
-        this.turn = 0;
+        this.parseboard = new ParseBoard(this);
+        this.winners = new ArrayList<>();
     }
 
     /**
@@ -165,12 +167,7 @@ public class Game extends Facade {
             wrongStateMarble.showAndWait();
             throw new GameException("You are in the wrong State " + gameState);
         } else {
-            if (turn < 2) {
-                board.addPiece(x, y, Marble.GREY, q);
-                turn++;
-            } else {
-                board.addPiece(x, y, this.currentPlayer.getColor(), q);
-            }
+            board.addPiece(x, y, this.currentPlayer.getColor(), q);
             this.tempMove = new Move(this.currentPlayer.getColor(), x, y, q);
             this.setState(State.ROTATE);
             setChanged();
@@ -235,9 +232,8 @@ public class Game extends Facade {
      */
     @Override
     public boolean isOver() {
-        if (!this.getBoard().isFreePlaceOnBoard()
-                || (this.getQuadrant(0).getPoint(0, 0) == Marble.BLACK
-                || this.getQuadrant(0).getPoint(0, 0) == Marble.WHITE)) {
+        winners = parseboard.getWinner();
+        if (!this.getBoard().isFreePlaceOnBoard() || !parseboard.hasWinner()) {
             this.setState(State.OVER);
         }
         return gameState == State.OVER;
@@ -262,18 +258,18 @@ public class Game extends Facade {
      * continue the logic of the game
      */
     @Override
-    public Player getWinners() {
-        if (isOver()
-                || (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK
-                || board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE)) {
-            if (board.getQuadrant(0).getPoint(0, 0) == Marble.WHITE) {
-                return players.get(0);
-            } else if (board.getQuadrant(0).getPoint(0, 0) == Marble.BLACK) {
-                return players.get(1);
-            }
+    public List<Player> getWinners() {
+        List<Player> playerW = new ArrayList<Player>();
+        System.out.println(winners.isEmpty());
+        System.out.println(winners.toString());
+        for (Marble m : winners) {
+            playerW.add(currentPlayer.getPlayer(players, m));
         }
-        return null;
+        
+        return playerW;
     }
+    
+    
 
     /**
      * Return the value of the marble at the quadrant, position x and y
