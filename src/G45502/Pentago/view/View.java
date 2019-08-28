@@ -45,7 +45,7 @@ public class View {
      */
     public Player askPlayer() {
         System.out.println(Color.toPurple("Name of the Player"));
-        Player p = new Player(sc.next(), game.setColor());
+        Player p = new Player(sc.next(), game.setColor(),true);
         return p;
     }
 

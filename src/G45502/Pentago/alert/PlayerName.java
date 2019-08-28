@@ -99,8 +99,8 @@ public class PlayerName {
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
         result.ifPresent(playerName -> {
-            model.addPlayer(new Player(playerName.getKey(), Marble.WHITE));
-            model.addPlayer(new Player(playerName.getValue(), Marble.BLACK));
+            model.addPlayer(new Player(playerName.getKey(), Marble.WHITE,true));
+            model.addPlayer(new Player(playerName.getValue(), Marble.BLACK,true));
         });
     }
 

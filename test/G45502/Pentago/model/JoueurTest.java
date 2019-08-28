@@ -21,7 +21,7 @@ public class JoueurTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Player instance = new Player("lucas", Marble.WHITE);
+        Player instance = new Player("lucas", Marble.WHITE,true);
         String expResult = "lucas";
         String result = instance.getName();
         assertEquals(expResult, result);
@@ -33,7 +33,7 @@ public class JoueurTest {
     @Test
     public void testGetColor() {
         System.out.println("getColor");
-        Player instance = new Player("lucas", Marble.WHITE);
+        Player instance = new Player("lucas", Marble.WHITE,true);
         Marble expResult = Marble.WHITE;
         Marble result = instance.getColor();
         assertEquals(expResult, result);
@@ -45,7 +45,7 @@ public class JoueurTest {
     @Test
     public void testIsWhite() {
         System.out.println("isWhite");
-        Player instance = new Player("lucas", Marble.WHITE);
+        Player instance = new Player("lucas", Marble.WHITE,true);
         boolean expResult = true;
         boolean result = instance.isWhite();
         assertEquals(expResult, result);
@@ -57,7 +57,7 @@ public class JoueurTest {
     @Test
     public void testIsNotWhite() {
         System.out.println("isNotWhite");
-        Player instance = new Player("lucas", Marble.BLACK);
+        Player instance = new Player("lucas", Marble.BLACK,true);
         boolean expResult = false;
         boolean result = instance.isWhite();
         assertEquals(expResult, result);
@@ -69,8 +69,8 @@ public class JoueurTest {
     @Test
     public void testGetPlayer() {
         System.out.println("getPlayer");
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
 
         Game game = new Game();
         game.addPlayer(player1);
@@ -89,8 +89,8 @@ public class JoueurTest {
     @Test(expected = NullPointerException.class)
     public void testGetPlayerNull() {
         System.out.println("getPlayerNull");
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
 
         Game game = new Game();
         game.addPlayer(player1);

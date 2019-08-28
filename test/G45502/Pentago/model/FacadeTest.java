@@ -21,7 +21,7 @@ public class FacadeTest {
     @Test
     public void testAddPlayer() {
         System.out.println("addPlayer");
-        Player player = new Player("Chris", Marble.BLACK);
+        Player player = new Player("Chris", Marble.BLACK,true);
         Game instance = new Game();
         instance.addPlayer(player);
         assertTrue(instance.getPlayers().size() > 0);
@@ -33,9 +33,9 @@ public class FacadeTest {
     @Test
     public void testAddPlayerToManyPlayer() {
         System.out.println("addPlayerToManyPlayer");
-        Player player = new Player("Chris", Marble.BLACK);
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Pauline", Marble.BLACK);
+        Player player = new Player("Chris", Marble.BLACK,true);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Pauline", Marble.BLACK,true);
         Game instance = new Game();
         instance.addPlayer(player);
         instance.addPlayer(player1);
@@ -62,8 +62,8 @@ public class FacadeTest {
     public void testGetCurrentPlayerBlackAndWhite() {
         System.out.println("getCurrentPlayer Black and White");
         
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
         
         Game instance = new Game();
         instance.addPlayer(player1);
@@ -79,8 +79,8 @@ public class FacadeTest {
     @Test
     public void testChangeCurrentPlayer() {
         System.out.println("changeCurrentPlayer");
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
         
         Game instance = new Game();
         instance.addPlayer(player1);
@@ -101,8 +101,8 @@ public class FacadeTest {
         int y = 0;
         int q = 0;
         
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
         
         Game instance = new Game();
         instance.addPlayer(player1);
@@ -148,8 +148,8 @@ public class FacadeTest {
     @Test
     public void testIsOverTrue() {
         System.out.println("isOver");
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
         
         Game instance = new Game();
         instance.addPlayer(player1);
@@ -166,8 +166,8 @@ public class FacadeTest {
     @Test
     public void testIsOverFalse() {
         System.out.println("isOver");
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
         
         Game instance = new Game();
         instance.addPlayer(player1);
@@ -195,8 +195,8 @@ public class FacadeTest {
     @Test(expected = NullPointerException.class)
     public void testGetWinners() {
         System.out.println("getWinners");
-        Player player1 = new Player("Lucas", Marble.WHITE);
-        Player player2 = new Player("Christopher", Marble.BLACK);
+        Player player1 = new Player("Lucas", Marble.WHITE,true);
+        Player player2 = new Player("Christopher", Marble.BLACK,true);
         
         Game instance = new Game();
         instance.addPlayer(player1);

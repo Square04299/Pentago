@@ -1,6 +1,7 @@
 package G45502.Pentago.model;
 
-import G45502.Pentago.exception.UnavailablePlace;
+import G45502.Pentago.alert.AddMarbleSame;
+import G45502.Pentago.alert.NoJokerLeft;
 
 /**
  * One of the 4 square of the board
@@ -11,12 +12,16 @@ public class Quadrant {
 
     private final Marble[][] quadrant;
     private final int MAX_SIZE;
+    private final NoJokerLeft noJoker;
+    private final AddMarbleSame sameMarble;
 
     /**
      * Builder of Quadrant
      */
     public Quadrant() {
         this.MAX_SIZE = 3;
+        this.noJoker = new NoJokerLeft();
+        this.sameMarble = new AddMarbleSame();
         this.quadrant = new Marble[MAX_SIZE][MAX_SIZE];
         for (int i = 0; i < MAX_SIZE; i++) {
             for (int j = 0; j < MAX_SIZE; j++) {
@@ -47,11 +52,31 @@ public class Quadrant {
         return this.quadrant[x][y];
     }
 
-    void addPiece(int x, int y, Marble color) {
+    void addPiece(int x, int y, Marble color,Player current) {
+        
         if (quadrant[x][y] != Marble.EMPTY) {
-            throw new UnavailablePlace("A Marble is already in this slot");
+            if (current.getColor() != quadrant[x][y]) {
+                if (current.getJoker()) {
+                    this.quadrant[x][y] = Marble.GREY;
+                    current.useJoker();
+                }else{
+                    noJoker.showAndWait();
+                }
+            }else{
+                sameMarble.showAndWait();
+            }
+        }else{
+            this.quadrant[x][y] = color;
         }
-        this.quadrant[x][y] = color;
+
+        
+
+        
+//        Old AddPiece
+//        if (quadrant[x][y] != Marble.EMPTY) {
+//            throw new UnavailablePlace("A Marble is already in this slot");
+//        }
+//        this.quadrant[x][y] = color;
     }
 
     void rotateRight() {

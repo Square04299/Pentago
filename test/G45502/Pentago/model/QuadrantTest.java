@@ -10,10 +10,13 @@ import static org.junit.Assert.*;
  */
 public class QuadrantTest {
     
+     private Player player;
+    
     /**
      * Build for the test
      */
     public QuadrantTest() {
+        this.player= new Player("Chris", Marble.BLACK, Boolean.TRUE);
     }
 
     /**
@@ -23,7 +26,7 @@ public class QuadrantTest {
     public void testAddPiece() {
         System.out.println("addPiece");
         Quadrant instance = new Quadrant();
-        instance.addPiece(0, 0, Marble.BLACK);
+        instance.addPiece(0, 0, Marble.BLACK,player);
         Marble[][] result = instance.getQuadrant();
         
         Quadrant expected = new Quadrant();
@@ -40,10 +43,10 @@ public class QuadrantTest {
         System.out.println("addPiece");
         
         Quadrant instance = new Quadrant();
-        instance.addPiece(0, 0, Marble.BLACK);
+        instance.addPiece(0, 0, Marble.BLACK,player);
         
         Quadrant exception = new Quadrant();
-        instance.addPiece(0, 0, Marble.BLACK);
+        instance.addPiece(0, 0, Marble.BLACK,player);
     }
 
     /**
@@ -54,12 +57,12 @@ public class QuadrantTest {
         
         System.out.println("rotateRight");
         Quadrant instance = new Quadrant();
-        instance.addPiece(0, 0, Marble.WHITE);
+        instance.addPiece(0, 0, Marble.WHITE,player);
         
         instance.rotateRight();
         
         Quadrant expected = new Quadrant();
-        expected.addPiece(2, 0, Marble.WHITE);
+        expected.addPiece(2, 0, Marble.WHITE,player);
         
         Marble[][] instance1 = instance.getQuadrant();
         Marble[][] expected1 = expected.getQuadrant();
@@ -74,12 +77,12 @@ public class QuadrantTest {
     public void testRotateLeft() {
         System.out.println("rotateLeft");
         Quadrant instance = new Quadrant();
-        instance.addPiece(0, 0, Marble.WHITE);
+        instance.addPiece(0, 0, Marble.WHITE,player);
         
         instance.rotateLeft();
         
         Quadrant expected = new Quadrant();
-        expected.addPiece(0, 2, Marble.WHITE);
+        expected.addPiece(0, 2, Marble.WHITE,player);
         
         Marble[][] instance1 = instance.getQuadrant();
         Marble[][] expected1 = expected.getQuadrant();
@@ -120,7 +123,7 @@ public class QuadrantTest {
         Quadrant instance = new Quadrant();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                instance.addPiece(i, j, Marble.BLACK);
+                instance.addPiece(i, j, Marble.BLACK,player);
             }
         }
         boolean expResult = false;

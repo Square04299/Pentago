@@ -10,10 +10,12 @@ import static org.junit.Assert.*;
  */
 public class BoardTest{
     
+    private Player player;
     /**
      * Builder of BoardTest
      */
     public BoardTest() {
+        this.player= new Player("Chris", Marble.BLACK, Boolean.TRUE);
     }
 
     /**
@@ -51,10 +53,10 @@ public class BoardTest{
         Marble m = Marble.WHITE;
         int v = 1;
         Board instanceBoard = new Board();
-        instanceBoard.addPiece(x, y, m, v);
+        instanceBoard.addPiece(x, y, m, v,player);
         
         Board expectedBoard = new Board();
-        expectedBoard.addPiece(x, y, m, v);
+        expectedBoard.addPiece(x, y, m, v,player);
         
         Marble[][]instance = instanceBoard.getQuadrant(v).getQuadrant();
         Marble[][]expected = expectedBoard.getQuadrant(v).getQuadrant();
@@ -74,8 +76,8 @@ public class BoardTest{
         Marble m = Marble.WHITE;
         
         Board instance = new Board();
-        instance.addPiece(x, y, m, v);
-        instance.addPiece(x, y, m, v);
+        instance.addPiece(x, y, m, v,player);
+        instance.addPiece(x, y, m, v,player);
     }
 
     /**
@@ -126,7 +128,7 @@ public class BoardTest{
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {
-                    instance.addPiece(j, k, Marble.BLACK, i);
+                    instance.addPiece(j, k, Marble.BLACK, i,player);
                 }
             }
         }

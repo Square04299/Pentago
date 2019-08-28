@@ -20,14 +20,14 @@ import javafx.scene.text.Text;
 public class FxInfo extends VBox implements Observer {
 
     private Facade model;
-    private String currentPlayerName, marbleColor;
-    private Text text, text1, tPlayerName, tMarbleColor;
+    private String currentPlayerName, marbleColor,joker;
+    private Text text, text1, text2, tPlayerName, tMarbleColor, tJoker;
     private ToggleGroup group;
     private RadioButton one, two, three, four;
-    private Button left, right, help, quit, historiqueB;
+    private Button left, right, help, quit, historiqueB, statB;
     private Help helpAlert;
     private FxHistorique historique;
-    //private HistoriqueAlert historique;
+    private FxStat stat;
 
     /**
      * Builder of the left side with all the information a player needs
@@ -44,7 +44,9 @@ public class FxInfo extends VBox implements Observer {
         text = new Text(20, 20, "Current player");
         tPlayerName = new Text();
         text1 = new Text(20, 20, "Marble Color");
+        text2 = new Text(20,20,"Joker");
         tMarbleColor = new Text();
+        tJoker = new Text();
         group = new ToggleGroup();
         one = new RadioButton("1");
         two = new RadioButton("2");
@@ -62,10 +64,14 @@ public class FxInfo extends VBox implements Observer {
         help = new Button("Help");
         helpAlert = new Help();
         quit = new Button("Quit");
-        //this.historique = new HistoriqueAlert();
+        //interro 1
         this.historique = new FxHistorique(model);
         model.addObserver(historique);
         historiqueB = new Button("Historique");
+        //interro 2
+        this.stat = new FxStat(model);
+        model.addObserver(stat);
+        statB = new Button("Statistique");
 
         left.setOnAction((ActionEvent t) -> {
             RadioButton selected = (RadioButton) group.getSelectedToggle();
@@ -91,9 +97,14 @@ public class FxInfo extends VBox implements Observer {
             temp.show();
         });
         
+        statB.setOnAction(((ActionEvent t) -> {
+            FxStat temp = new FxStat(model);
+            temp.show();
+        }));
+        
 
-        this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, one,
-                two, three, four, left, right, historiqueB, help, quit);
+        this.getChildren().addAll(text, tPlayerName, text1, tMarbleColor, text2, tJoker ,one,
+                two, three, four, left, right, historiqueB, statB, help, quit);
     }
 
     @Override
@@ -111,10 +122,12 @@ public class FxInfo extends VBox implements Observer {
         }else{
             this.marbleColor = model.getCurrentPlayer().getColor().toString();
         }
+        this.joker = Boolean.toString(model.getCurrentPlayer().getJoker());
     }
 
     void playerData() {
         tPlayerName.setText(currentPlayerName);
         tMarbleColor.setText(marbleColor);
+        tJoker.setText(joker);
     }
 }

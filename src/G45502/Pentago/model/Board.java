@@ -36,8 +36,8 @@ public class Board {
         return this.board.get(value);
     }
 
-    void addPiece(int x, int y, Marble c, int q) {
-        this.getQuadrant(q).addPiece(x, y, c);
+    void addPiece(int x, int y, Marble c, int q, Player current) {
+        this.getQuadrant(q).addPiece(x, y, c,current);
     }
 
     boolean isEmptyQuadrant(int value) {

@@ -175,11 +175,11 @@ public class Game extends Facade {
             throw new GameException("You are in the wrong State " + gameState);
         } else {
             if (turn < 2) {
-                board.addPiece(x, y, Marble.GREY, q);
+                board.addPiece(x, y, Marble.GREY, q,currentPlayer);
                 this.tempMove = new Move(Marble.GREY, x, y, q);
                 turn++;
             }else{
-                board.addPiece(x, y, this.currentPlayer.getColor(), q);
+                board.addPiece(x, y, this.currentPlayer.getColor(), q,currentPlayer);
                 this.tempMove = new Move(this.currentPlayer.getColor(), x, y, q);
             }
             this.setState(State.ROTATE);

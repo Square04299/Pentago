@@ -12,16 +12,19 @@ public class Player {
 
     private final String name;
     private final Marble color;
+    private Boolean joker;
 
     /**
      * Builder of Player Will Build the name and marble color
      *
      * @param name name of the player
      * @param color Color of the Marble the Player will get
+     * @param joker See if the player can place a marble in the enemy spot
      */
-    public Player(String name, Marble color) {
+    public Player(String name, Marble color,Boolean joker) {
         this.name = name;
         this.color = color;
+        this.joker = joker;
     }
 
     /**
@@ -41,6 +44,18 @@ public class Player {
     public Marble getColor() {
         return color;
     }
+    
+    public boolean getJoker(){
+        return joker;
+    }
+    
+    /**
+     * After the player used this joker it will turn false
+     * Only 1 joker per player
+     */
+    public void useJoker(){
+        this.joker = false;
+    }
 
     boolean isWhite() {
         return (this.color == Marble.WHITE);
@@ -54,7 +69,7 @@ public class Player {
         Player newCurrentPlayer = null;
         for (Player player : players) {
             if (player.getColor() == color) {
-                newCurrentPlayer = new Player(player.getName(), color);
+                newCurrentPlayer = player;
             }
         }
         return newCurrentPlayer;
